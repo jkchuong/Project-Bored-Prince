@@ -18,8 +18,8 @@ namespace Project.Scripts.Parallax
         public void MoveLayer(float positionChangeX, float positionChangeY)
         {
             newPosition = transform.localPosition;
-            newPosition.x -= positionChangeX * (-parallaxAmount * 40) * Time.deltaTime;
-            newPosition.y -= positionChangeY * (-parallaxAmount * 40) * Time.deltaTime;
+            newPosition.x -= positionChangeX * (-parallaxAmount * 40) * (Time.deltaTime);
+            newPosition.y -= positionChangeY * (-parallaxAmount * 40) * (Time.deltaTime);
             transform.localPosition = newPosition;
         }
     }

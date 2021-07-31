@@ -8,36 +8,42 @@ namespace Project.Scripts.Parallax
     public class ParallaxController : MonoBehaviour
     {
         private delegate void ParallaxCameraDelegate(float cameraPositionChangeX, float cameraPositionChangeY);
+
         private ParallaxCameraDelegate onCameraMove;
         private Vector2 oldCameraPosition;
         private readonly List<ParallaxLayer> parallaxLayers = new List<ParallaxLayer>();
-        private Vector3 mainCameraPosition;
-        
+
+        private Camera mainCamera;
+
         private void Start()
         {
             onCameraMove += MoveLayer;
-            FindLayer();
+            FindLayers();
+            mainCamera = Camera.main;
             
-            mainCameraPosition = Camera.main.transform.position;
-            oldCameraPosition.x = mainCameraPosition.x;
-            oldCameraPosition.y = mainCameraPosition.y;
+            Vector3 cameraPos = mainCamera.transform.position;
+            oldCameraPosition.x = cameraPos.x;
+            oldCameraPosition.y = cameraPos.y;
         }
 
         private void FixedUpdate()
         {
-            if (Math.Abs(mainCameraPosition.x - oldCameraPosition.x) > 0 || Math.Abs((mainCameraPosition.y) - oldCameraPosition.y) > 0)
+            Vector3 cameraPos = mainCamera.transform.position;
+            
+            if (Math.Abs(cameraPos.x - oldCameraPosition.x) > 0.01 || Math.Abs((cameraPos.y) - oldCameraPosition.y) > 0.01)
             {
                 if (onCameraMove != null)
                 {
-                    var cameraPositionChange = new Vector2(oldCameraPosition.x - mainCameraPosition.x, oldCameraPosition.y - mainCameraPosition.y);
+                    var cameraPositionChange = new Vector2(oldCameraPosition.x - cameraPos.x, oldCameraPosition.y - cameraPos.y);
                     onCameraMove(cameraPositionChange.x, cameraPositionChange.y);
                 }
 
-                oldCameraPosition = new Vector2(mainCameraPosition.x, mainCameraPosition.y);
+                oldCameraPosition = new Vector2(cameraPos.x, cameraPos.y);
             }
         }
 
-        private void FindLayer()
+        //Finds all the objects that have a ParallaxLayer component, and adds them to the parallaxLayers list.
+        private void FindLayers()
         {
             parallaxLayers.Clear();
 
@@ -52,6 +58,7 @@ namespace Project.Scripts.Parallax
             }
         }
 
+        //Move each layer based on each layers position. This is being used via the ParallaxLayer script
         private void MoveLayer(float positionChangeX, float positionChangeY)
         {
             foreach (ParallaxLayer layer in parallaxLayers)
