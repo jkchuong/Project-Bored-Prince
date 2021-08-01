@@ -7,6 +7,8 @@ public class Player : PhysicsObject
     [SerializeField] private float maxSpeed = 5f;
     [SerializeField] private float jumpSpeed = 10f;
 
+    [SerializeField] private int coinsCollected;
+    
     private protected override void Start()
     {
         base.Start();
@@ -21,5 +23,10 @@ public class Player : PhysicsObject
         {
             velocity.y = jumpSpeed;
         }
+    }
+
+    public void AddCoin()
+    {
+        coinsCollected++;
     }
 }
