@@ -6,17 +6,18 @@ public class PhysicsObject : MonoBehaviour
     [SerializeField] private float minGroundNormalY = 0.65f;
     [SerializeField] private float gravityModifier = 1f;
 
-    protected Vector2 targetVelocity;
-    protected bool grounded;
-    protected Vector2 groundNormal;
-    protected Rigidbody2D rb2d;
+    protected Vector2 targetVelocity;   
+    protected Rigidbody2D rb2d; 
     protected Vector2 velocity;
-    protected ContactFilter2D contactFilter;
-    protected readonly RaycastHit2D[] hitBuffer = new RaycastHit2D[16];
-    protected readonly List<RaycastHit2D> hitBufferList = new List<RaycastHit2D>(16);
+    protected bool grounded;
+    
+    private Vector2 groundNormal;
+    private ContactFilter2D contactFilter;
+    private readonly RaycastHit2D[] hitBuffer = new RaycastHit2D[16];
+    private readonly List<RaycastHit2D> hitBufferList = new List<RaycastHit2D>(16);
 
-    protected const float MIN_MOVE_DISTANCE = 0.001f;
-    protected const float SHELL_RADIUS = 0.01f;
+    private const float MIN_MOVE_DISTANCE = 0.001f;
+    private const float SHELL_RADIUS = 0.01f;
 
     private void OnEnable()
     {
@@ -99,14 +100,14 @@ public class PhysicsObject : MonoBehaviour
                 float projection = Vector2.Dot(velocity, currentNormal);
                 if (projection < 0)
                 {
-                    velocity = velocity - projection * currentNormal;
+                    velocity -= projection * currentNormal;
                 }
 
                 float modifiedDistance = raycast.distance - SHELL_RADIUS;
                 distance = modifiedDistance < distance ? modifiedDistance : distance;
             }
         }
-
-        rb2d.position = rb2d.position + move.normalized * distance;
+        
+        rb2d.position += move.normalized * distance;
     }
 }

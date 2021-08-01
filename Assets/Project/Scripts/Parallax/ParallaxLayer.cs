@@ -11,16 +11,17 @@ namespace Project.Scripts.Parallax
         [Tooltip("Amount of parallax. 1 simulates being close to the camera, -1 simulates being very far from the camera.")]
         private float parallaxAmount;
 
-        [NonSerialized] public Vector3 newPosition;
+        [NonSerialized] private Vector3 newPosition;
 
-        private bool adjusted = false;
+        // private bool adjusted = false;
 
         public void MoveLayer(float positionChangeX, float positionChangeY)
         {
-            newPosition = transform.localPosition;
+            var transform1 = transform;
+            newPosition = transform1.localPosition;
             newPosition.x -= positionChangeX * (-parallaxAmount * 40) * (Time.deltaTime);
             newPosition.y -= positionChangeY * (-parallaxAmount * 40) * (Time.deltaTime);
-            transform.localPosition = newPosition;
+            transform1.localPosition = newPosition;
         }
     }
 }

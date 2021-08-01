@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : PhysicsObject
@@ -18,10 +17,9 @@ public class Player : PhysicsObject
     {
         targetVelocity = new Vector2(Input.GetAxis("Horizontal") * maxSpeed, 0);
 
-        if (Input.GetButtonDown("Jump") && grounded)
+        if (Input.GetButton("Jump") && grounded)
         {
             velocity.y = jumpSpeed;
         }
-        
     }
 }
