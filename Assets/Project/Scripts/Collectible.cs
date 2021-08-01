@@ -17,7 +17,30 @@ public class Collectible : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<Player>().AddCoin();
+            Player player = other.GetComponent<Player>();
+            
+            switch (itemType)
+            {
+                case ItemType.Coin:
+                    player.AddCoin();
+                    break;
+                
+                case ItemType.Health:
+                    player.ChangeHealth(10f);
+                    break;
+                
+                case ItemType.FireBuff: 
+                    Debug.LogError("Fire Buff not implemented");
+                    break;
+                
+                case ItemType.IceBuff:
+                    Debug.LogError("Ice Buff not implemented");
+                    break;
+                
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+            
             gameObject.SetActive(false);
         }
     }

@@ -26,6 +26,7 @@ public class Player : PhysicsObject
         base.Start();
         rb2d.gravityScale = 0;
 
+        // Get original health bar size
         fullHealthBarSize = healthBar.rectTransform.sizeDelta;
         
         UpdateUI();
@@ -39,8 +40,6 @@ public class Player : PhysicsObject
         {
             velocity.y = jumpSpeed;
         }
-        
-        ChangeHealth(1);
     }
 
     public void AddCoin()
@@ -52,15 +51,18 @@ public class Player : PhysicsObject
     public void ChangeHealth(float healthChange)
     {
         healthPercentage = Mathf.Clamp(healthPercentage + healthChange, 0, 100);
-
         UpdateUI();
     }
     
     private void UpdateUI()
     {
+        // Update Coins
         coinsText.text = "Coins: " + coinsCollected;
 
+        // Update Health
         float healthLength = healthPercentage / HEALTH_MAX_PERCENTAGE;
         healthBar.rectTransform.sizeDelta = new Vector2(fullHealthBarSize.x * healthLength, fullHealthBarSize.y);
+        
+        // Update Buff
     }
 }
