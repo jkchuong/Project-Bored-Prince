@@ -17,8 +17,7 @@ public class Collectible : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<Player>().AddCoin(); 
-            
+            other.GetComponent<Player>().AddCoin();
             gameObject.SetActive(false);
         }
     }

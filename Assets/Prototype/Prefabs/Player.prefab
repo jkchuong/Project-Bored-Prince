@@ -138,3 +138,6 @@ MonoBehaviour:
   gravityModifier: 3
   maxSpeed: 6
   jumpSpeed: 17
+  health: 100
+  coinsCollected: 0
+  coinsText: {fileID: 0}
