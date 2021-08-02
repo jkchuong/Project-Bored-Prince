@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,11 +13,13 @@ public class Player : PhysicsObject
     [Header("Stats")]
     [SerializeField] private float healthPercentage;
     [SerializeField] private int coinsCollected;
-
+    private Dictionary<string, Sprite> inventory = new Dictionary<string, Sprite>();
     
     [Header("UI Elements")]
     [SerializeField] private TextMeshProUGUI coinsText;
     [SerializeField] private Image healthBar;
+    [SerializeField] private Image inventoryItemImage;
+    [SerializeField] private Sprite inventoryBlankItem;
 
     private const float HEALTH_MAX_PERCENTAGE = 100f;
     private Vector2 fullHealthBarSize;
@@ -42,6 +45,18 @@ public class Player : PhysicsObject
         }
     }
 
+    private void UpdateUI() //TODO: Implement observer pattern
+    {
+        // Update Coins
+        coinsText.text = "Coins: " + coinsCollected;
+
+        // Update Health
+        float healthLength = healthPercentage / HEALTH_MAX_PERCENTAGE;
+        healthBar.rectTransform.sizeDelta = new Vector2(fullHealthBarSize.x * healthLength, fullHealthBarSize.y);
+        
+        // Update Buff
+    }
+    
     public void AddCoin()
     {
         coinsCollected++;
@@ -53,16 +68,16 @@ public class Player : PhysicsObject
         healthPercentage = Mathf.Clamp(healthPercentage + healthChange, 0, 100);
         UpdateUI();
     }
-    
-    private void UpdateUI()
-    {
-        // Update Coins
-        coinsText.text = "Coins: " + coinsCollected;
 
-        // Update Health
-        float healthLength = healthPercentage / HEALTH_MAX_PERCENTAGE;
-        healthBar.rectTransform.sizeDelta = new Vector2(fullHealthBarSize.x * healthLength, fullHealthBarSize.y);
-        
-        // Update Buff
+    public void AddInventoryItem(string itemName, Sprite itemSprite)
+    {
+        inventory.Add(itemName, itemSprite);
+        inventoryItemImage.sprite = inventory[itemName];
+    }
+
+    public void RemoveInventoryItem(string itemName)
+    {
+        inventory.Remove(itemName);
+        inventoryItemImage.sprite = inventoryBlankItem;
     }
 }

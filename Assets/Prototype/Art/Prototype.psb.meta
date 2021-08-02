@@ -179,6 +179,50 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: 4, y: 4}
+  - name: Socks
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 3852
+      y: 432
+      width: 66
+      height: 77
+    spriteID: a8eb8d1dede203b42be36f9f6d5fc2b6
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 2157, y: -478}
+  - name: Socks Shiny
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 3852
+      y: 347
+      width: 67
+      height: 77
+    spriteID: 14c3c7a8ceeb28b4e9b6a5eb85fca17c
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 2247, y: -563}
   platformSettings: []
   mosaicLayers: 1
   documentPivot: {x: 0, y: 0}
@@ -212,6 +256,13 @@ ScriptedImporter:
     spriteID: 22d37e37a5bf16043839669da7e723ec
     layerID: 4
     mosaicPosition: {x: 3852, y: 4}
+  - name: Socks
+    spriteName: Socks
+    isGroup: 0
+    parentIndex: -1
+    spriteID: a8eb8d1dede203b42be36f9f6d5fc2b6
+    layerID: 7
+    mosaicPosition: {x: 3852, y: 432}
   - name: Ground
     spriteName: Ground
     isGroup: 0
@@ -219,6 +270,13 @@ ScriptedImporter:
     spriteID: eafadfb57e7a69a459102d9b5f71ee3f
     layerID: 3
     mosaicPosition: {x: 4, y: 2172}
+  - name: Socks Shiny
+    spriteName: Socks Shiny
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 14c3c7a8ceeb28b4e9b6a5eb85fca17c
+    layerID: 8
+    mosaicPosition: {x: 3852, y: 347}
   - name: Background (Reference)
     spriteName: Background (Reference)
     isGroup: 0

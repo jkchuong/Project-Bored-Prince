@@ -3,15 +3,19 @@ using UnityEngine;
 
 public class Collectible : MonoBehaviour
 {
+    [SerializeField] private ItemType itemType;
+    [SerializeField] private string itemName;
+    [SerializeField] private Sprite itemSprite;
+    
     private enum ItemType
     {
         Coin,
         Health,
         FireBuff,
-        IceBuff
+        IceBuff,
+        QuestItem
     }
 
-    [SerializeField] private ItemType itemType;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -19,6 +23,7 @@ public class Collectible : MonoBehaviour
         {
             Player player = other.GetComponent<Player>();
             
+            // TODO: Add Event Listener instead?
             switch (itemType)
             {
                 case ItemType.Coin:
@@ -35,6 +40,10 @@ public class Collectible : MonoBehaviour
                 
                 case ItemType.IceBuff:
                     Debug.LogError("Ice Buff not implemented");
+                    break;
+
+                case ItemType.QuestItem:
+                    player.AddInventoryItem(itemName, itemSprite);
                     break;
                 
                 default:

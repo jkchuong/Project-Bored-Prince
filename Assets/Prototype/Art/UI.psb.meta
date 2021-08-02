@@ -67,18 +67,18 @@ ScriptedImporter:
     textureFormatSet: 0
     applyGammaDecoding: 0
   spriteImportData:
-  - name: 
+  - name: UI_1
     originalName: 
-    pivot: {x: 0, y: 0}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 0
       y: 0
-      width: 0
-      height: 0
-    spriteID: 
+      width: 3840
+      height: 2160
+    spriteID: 35e7d8ed3523ff94c839d9eeb179ac62
     internalID: 0
     spriteBone: []
     spriteOutline: []
@@ -135,6 +135,72 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: 4, y: 4}
+  - name: Inventory Socks
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 3852
+      y: 382
+      width: 181
+      height: 181
+    spriteID: cf83ed6aa0ff9a64e9b1c55dbda820a2
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 506, y: -1570}
+  - name: Inventory Blank
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 3852
+      y: 4
+      width: 181
+      height: 181
+    spriteID: 10ebe94c17c37064a8fe11089a55f279
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 341, y: -1948}
+  - name: Inventory Socks Shiny
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 3852
+      y: 193
+      width: 181
+      height: 181
+    spriteID: f5b5dba08de6ccc46aade943a4a126d1
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 710, y: -1752}
   platformSettings:
   - name: DefaultTexturePlatform
     overridden: 0
@@ -198,6 +264,20 @@ ScriptedImporter:
   characterMode: 1
   mosaicPSDLayers: []
   rigPSDLayers:
+  - name: Inventory Socks Shiny
+    spriteName: Inventory Socks Shiny
+    isGroup: 0
+    parentIndex: -1
+    spriteID: f5b5dba08de6ccc46aade943a4a126d1
+    layerID: 11
+    mosaicPosition: {x: 3852, y: 193}
+  - name: Inventory Socks
+    spriteName: Inventory Socks
+    isGroup: 0
+    parentIndex: -1
+    spriteID: cf83ed6aa0ff9a64e9b1c55dbda820a2
+    layerID: 8
+    mosaicPosition: {x: 3852, y: 382}
   - name: Health Bar
     spriteName: Health Bar
     isGroup: 0
@@ -205,6 +285,13 @@ ScriptedImporter:
     spriteID: 6416e60f2224e664398da112c9b95fe2
     layerID: 3
     mosaicPosition: {x: 4, y: 2172}
+  - name: Inventory Blank
+    spriteName: Inventory Blank
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 10ebe94c17c37064a8fe11089a55f279
+    layerID: 10
+    mosaicPosition: {x: 3852, y: 4}
   - name: Background (Reference)
     spriteName: Background (Reference)
     isGroup: 0
