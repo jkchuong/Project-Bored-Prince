@@ -69,13 +69,13 @@ public class Player : PhysicsObject
         UpdateUI();
     }
 
-    public void AddInventoryItem(string itemName, Sprite itemSprite)
+    public void AddQuestItem(string itemName, Sprite itemSprite)
     {
         inventory.Add(itemName, itemSprite);
         inventoryItemImage.sprite = inventory[itemName];
     }
 
-    public void RemoveInventoryItem(string itemName)
+    public void RemoveQuestItem(string itemName)
     {
         inventory.Remove(itemName);
         inventoryItemImage.sprite = inventoryBlankItem;

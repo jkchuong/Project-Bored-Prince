@@ -112,7 +112,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -56, y: 197}
+    uvTransform: {x: -96, y: 221}
   - name: Background (Reference)
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -143,7 +143,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 3852
-      y: 382
+      y: 1338
       width: 181
       height: 181
     spriteID: cf83ed6aa0ff9a64e9b1c55dbda820a2
@@ -156,7 +156,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 506, y: -1570}
+    uvTransform: {x: 506, y: -614}
   - name: Inventory Blank
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -165,7 +165,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 3852
-      y: 4
+      y: 960
       width: 181
       height: 181
     spriteID: 10ebe94c17c37064a8fe11089a55f279
@@ -178,7 +178,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 341, y: -1948}
+    uvTransform: {x: 341, y: -992}
   - name: Inventory Socks Shiny
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -187,7 +187,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 3852
-      y: 193
+      y: 1149
       width: 181
       height: 181
     spriteID: f5b5dba08de6ccc46aade943a4a126d1
@@ -200,7 +200,95 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 710, y: -1752}
+    uvTransform: {x: 710, y: -796}
+  - name: Vine Buff Icon
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 3852
+      y: 482
+      width: 227
+      height: 231
+    spriteID: 0e03e4f42c20ffa46942af6f291d666e
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 3168, y: -1208}
+  - name: Ice Buff Icon
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 3852
+      y: 243
+      width: 231
+      height: 231
+    spriteID: b268dd472f718f64fb6cee1f4580b318
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 3462, y: -1447}
+  - name: Fire Buff Icon
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 3852
+      y: 721
+      width: 227
+      height: 231
+    spriteID: 87ceaa53c7c86ec4688f665bc40409b1
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 3752, y: -969}
+  - name: No Buff Icon
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 3852
+      y: 4
+      width: 231
+      height: 231
+    spriteID: 2d43b71b9083d0e45bf10db389b8d30d
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 2876, y: -1686}
   platformSettings:
   - name: DefaultTexturePlatform
     overridden: 0
@@ -264,20 +352,48 @@ ScriptedImporter:
   characterMode: 1
   mosaicPSDLayers: []
   rigPSDLayers:
+  - name: No Buff Icon
+    spriteName: No Buff Icon
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 2d43b71b9083d0e45bf10db389b8d30d
+    layerID: 35
+    mosaicPosition: {x: 3852, y: 4}
+  - name: Vine Buff Icon
+    spriteName: Vine Buff Icon
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 0e03e4f42c20ffa46942af6f291d666e
+    layerID: 34
+    mosaicPosition: {x: 3852, y: 482}
+  - name: Ice Buff Icon
+    spriteName: Ice Buff Icon
+    isGroup: 0
+    parentIndex: -1
+    spriteID: b268dd472f718f64fb6cee1f4580b318
+    layerID: 32
+    mosaicPosition: {x: 3852, y: 243}
+  - name: Fire Buff Icon
+    spriteName: Fire Buff Icon
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 87ceaa53c7c86ec4688f665bc40409b1
+    layerID: 26
+    mosaicPosition: {x: 3852, y: 721}
   - name: Inventory Socks Shiny
     spriteName: Inventory Socks Shiny
     isGroup: 0
     parentIndex: -1
     spriteID: f5b5dba08de6ccc46aade943a4a126d1
     layerID: 11
-    mosaicPosition: {x: 3852, y: 193}
+    mosaicPosition: {x: 3852, y: 1149}
   - name: Inventory Socks
     spriteName: Inventory Socks
     isGroup: 0
     parentIndex: -1
     spriteID: cf83ed6aa0ff9a64e9b1c55dbda820a2
     layerID: 8
-    mosaicPosition: {x: 3852, y: 382}
+    mosaicPosition: {x: 3852, y: 1338}
   - name: Health Bar
     spriteName: Health Bar
     isGroup: 0
@@ -291,7 +407,7 @@ ScriptedImporter:
     parentIndex: -1
     spriteID: 10ebe94c17c37064a8fe11089a55f279
     layerID: 10
-    mosaicPosition: {x: 3852, y: 4}
+    mosaicPosition: {x: 3852, y: 960}
   - name: Background (Reference)
     spriteName: Background (Reference)
     isGroup: 0

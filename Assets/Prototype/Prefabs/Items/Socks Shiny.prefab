@@ -93,12 +93,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8807949931185114712}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bf9cf6a29e0cc340b4295af871410be, type: 3}
+  m_Script: {fileID: 11500000, guid: 17d3f7e0fa911614ab57edf827b190c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemType: 4
-  itemName: Shiny Socks
-  itemSprite: {fileID: 190755810806968078, guid: fef0eca6c26525d4eb3808d38c4d2eed, type: 3}
+  itemType: 0
 --- !u!61 &3936275953141004868
 BoxCollider2D:
   m_ObjectHideFlags: 0
