@@ -15,7 +15,7 @@ public class Player : PhysicsObject
     [Header("Stats")]
     [SerializeField] private float healthPercentage;
     [SerializeField] private int coinsCollected;
-    private event Action buff;
+    private event Action Buff;
     private Dictionary<string, Sprite> inventory = new Dictionary<string, Sprite>();
     
     [Header("UI Elements")]
@@ -52,7 +52,7 @@ public class Player : PhysicsObject
         }
     }
 
-    private void UpdateUI() //TODO: Implement observer pattern
+    private void UpdateUI()
     {
         // Update Coins
         coinsText.text = "Coins: " + coinsCollected;
@@ -60,8 +60,6 @@ public class Player : PhysicsObject
         // Update Health
         float healthLength = healthPercentage / HEALTH_MAX_PERCENTAGE;
         healthBar.rectTransform.sizeDelta = new Vector2(fullHealthBarSize.x * healthLength, fullHealthBarSize.y);
-        
-        // Update Buff
     }
     
     public void AddCoin()
@@ -88,8 +86,13 @@ public class Player : PhysicsObject
         inventoryItemImage.sprite = inventoryBlankItem;
     }
 
-    public void AddBuff(Action buffAbility)
+    public void AddBuff(Action buffAbility, Sprite buffSprite)
     {
-        buff += buffAbility;
+        Buff = buffAbility;
+        buffImage.sprite = buffSprite;
+        
+#if UNITY_EDITOR
+        Buff?.Invoke();
+#endif
     }
 }
