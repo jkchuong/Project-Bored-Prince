@@ -2442,7 +2442,6 @@ Transform:
   - {fileID: 1119172068}
   - {fileID: 1408154053}
   - {fileID: 8519716389559526863}
-  - {fileID: 8180657502939111144}
   m_Father: {fileID: 1616494246}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4126,63 +4125,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 733b28489d6664b4090a4c74ab94a428, type: 3}
---- !u!1001 &1047373030927505587
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1212358003}
-    m_Modifications:
-    - target: {fileID: 8807949931185114712, guid: b9b70d3aa21bef241b9b0db6bbe99721, type: 3}
-      propertyPath: m_Name
-      value: Socks Shiny
-      objectReference: {fileID: 0}
-    - target: {fileID: 9155409707086890587, guid: b9b70d3aa21bef241b9b0db6bbe99721, type: 3}
-      propertyPath: m_RootOrder
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 9155409707086890587, guid: b9b70d3aa21bef241b9b0db6bbe99721, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -7.17
-      objectReference: {fileID: 0}
-    - target: {fileID: 9155409707086890587, guid: b9b70d3aa21bef241b9b0db6bbe99721, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 9155409707086890587, guid: b9b70d3aa21bef241b9b0db6bbe99721, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9155409707086890587, guid: b9b70d3aa21bef241b9b0db6bbe99721, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9155409707086890587, guid: b9b70d3aa21bef241b9b0db6bbe99721, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9155409707086890587, guid: b9b70d3aa21bef241b9b0db6bbe99721, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9155409707086890587, guid: b9b70d3aa21bef241b9b0db6bbe99721, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9155409707086890587, guid: b9b70d3aa21bef241b9b0db6bbe99721, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9155409707086890587, guid: b9b70d3aa21bef241b9b0db6bbe99721, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9155409707086890587, guid: b9b70d3aa21bef241b9b0db6bbe99721, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b9b70d3aa21bef241b9b0db6bbe99721, type: 3}
 --- !u!1001 &1433051833041719346
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4425,14 +4367,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1212358003}
     m_Modifications:
-    - target: {fileID: 3770435119366227226, guid: 6a23a37cc98258040a1b0d606f5d52c1, type: 3}
-      propertyPath: itemName
-      value: Socks
-      objectReference: {fileID: 0}
-    - target: {fileID: 3770435119366227226, guid: 6a23a37cc98258040a1b0d606f5d52c1, type: 3}
-      propertyPath: itemSprite
-      value: 
-      objectReference: {fileID: 7702633478124593716, guid: fef0eca6c26525d4eb3808d38c4d2eed, type: 3}
     - target: {fileID: 4743371146732833886, guid: 6a23a37cc98258040a1b0d606f5d52c1, type: 3}
       propertyPath: m_Name
       value: Socks
@@ -4481,6 +4415,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5055952034072844328, guid: 6a23a37cc98258040a1b0d606f5d52c1, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8250ba99aa6d5ad4f837a7bea00ad3a5, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a23a37cc98258040a1b0d606f5d52c1, type: 3}
 --- !u!1001 &5159369515859108088
@@ -4630,11 +4568,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b0cfe4555b7f4a4e8850d820bbcb29f, type: 3}
---- !u!4 &8180657502939111144 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 9155409707086890587, guid: b9b70d3aa21bef241b9b0db6bbe99721, type: 3}
-  m_PrefabInstance: {fileID: 1047373030927505587}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8519716389559526863 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4963324927718311005, guid: 6a23a37cc98258040a1b0d606f5d52c1, type: 3}

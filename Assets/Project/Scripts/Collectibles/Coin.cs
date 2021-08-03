@@ -4,11 +4,13 @@ namespace Project.Scripts.Collectibles
 {
     public class Coin : Collectible
     {
-        protected override void OnPickUp(Player player)
+        public override ItemType ItemType => ItemType.Coin;
+
+        protected override void HandlePickUp(Player player)
         {
             player.AddCoin(); 
             
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 }

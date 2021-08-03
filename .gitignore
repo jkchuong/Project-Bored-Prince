@@ -59,7 +59,7 @@ sysinfo.txt
 crashlytics-build.properties
 
 # Asset Packs
-/[Aa]sset Packs/
+[Aa]sset Packs/
 
 # Ignore only specific Rider files/directories
 # For syntax see: https://stackoverflow.com/a/14422549/12124

@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 268c8176ee41198429874df10211f5fa, type: 3}
-  m_Name: Socks
+  m_Name: Shiny Socks
   m_EditorClassIdentifier: 
-  itemName: Socks
-  itemSprite: {fileID: -8458292624895474016, guid: 1f29b870e7fd51044a9388e686ff83b9, type: 3}
-  itemImageUI: {fileID: 7702633478124593716, guid: fef0eca6c26525d4eb3808d38c4d2eed, type: 3}
+  itemName: Shiny Socks
+  itemSprite: {fileID: -8809123516383908968, guid: 1f29b870e7fd51044a9388e686ff83b9, type: 3}
+  itemImageUI: {fileID: 190755810806968078, guid: fef0eca6c26525d4eb3808d38c4d2eed, type: 3}

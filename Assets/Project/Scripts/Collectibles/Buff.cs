@@ -4,16 +4,22 @@ namespace Project.Scripts.Collectibles
 {
     public abstract class Buff : Collectible
     {
-        [SerializeField] private BuffType buffType;
+        public override ItemType ItemType => ItemType.Buff;
+        
+        public abstract BuffType BuffType { get; }
 
-        private enum BuffType
+        protected override void HandlePickUp(Player player)
         {
-            Fire,
-            Ice,
-            Vine
+            player.AddBuff(BuffAbility);
         }
-            
-        // TODO: Add buffs
+        
         protected abstract void BuffAbility();
+    }
+    
+    public enum BuffType
+    {
+        Fire,
+        Ice,
+        Vine
     }
 }

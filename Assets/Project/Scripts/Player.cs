@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using Project.Scripts.Collectibles;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,6 +15,7 @@ public class Player : PhysicsObject
     [Header("Stats")]
     [SerializeField] private float healthPercentage;
     [SerializeField] private int coinsCollected;
+    private event Action buff;
     private Dictionary<string, Sprite> inventory = new Dictionary<string, Sprite>();
     
     [Header("UI Elements")]
@@ -78,10 +81,15 @@ public class Player : PhysicsObject
         inventory.Add(itemName, itemSprite);
         inventoryItemImage.sprite = inventory[itemName];
     }
-
+    
     public void RemoveQuestItem(string itemName)
     {
         inventory.Remove(itemName);
         inventoryItemImage.sprite = inventoryBlankItem;
+    }
+
+    public void AddBuff(Action buffAbility)
+    {
+        buff += buffAbility;
     }
 }
