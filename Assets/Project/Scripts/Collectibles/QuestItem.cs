@@ -2,13 +2,11 @@ using UnityEngine;
 
 namespace Project.Scripts.Collectibles
 {
-    public class Coin : Collectible
+    public class QuestItem : Collectible
     {
         protected override void OnPickUp(Player player)
         {
-            player.AddCoin(); 
-            
-            Destroy(this);
+            throw new System.NotImplementedException();
         }
     }
 }

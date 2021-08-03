@@ -18,9 +18,13 @@ public class Player : PhysicsObject
     [Header("UI Elements")]
     [SerializeField] private TextMeshProUGUI coinsText;
     [SerializeField] private Image healthBar;
+    [Space]
     [SerializeField] private Image inventoryItemImage;
     [SerializeField] private Sprite inventoryBlankItem;
-
+    [Space]
+    [SerializeField] private Image buffImage;
+    [SerializeField] private Sprite buffBlank;
+    
     private const float HEALTH_MAX_PERCENTAGE = 100f;
     private Vector2 fullHealthBarSize;
     

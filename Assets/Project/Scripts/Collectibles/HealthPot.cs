@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Project.Scripts.Collectibles
 {
-    public class HealthBuff : Collectible
+    public class HealthPot : Collectible
     {
         [SerializeField] private float healAmount = 10;
         
