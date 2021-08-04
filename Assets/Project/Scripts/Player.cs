@@ -90,9 +90,16 @@ public class Player : PhysicsObject
     {
         Buff = buffAbility;
         buffImage.sprite = buffSprite;
-        
-#if UNITY_EDITOR
-        Buff?.Invoke();
-#endif
+    }
+
+    public void RemoveBuff()
+    {
+        Buff = null;
+        buffImage.sprite = buffBlank;
+    }
+
+    public bool InventoryContains(string itemName)
+    {
+        return inventory.ContainsKey(itemName);
     }
 }
