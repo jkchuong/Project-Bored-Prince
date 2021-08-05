@@ -6,7 +6,7 @@ public class Enemy : PhysicsObject
     [Header("Stats")]
     [SerializeField] private float maxSpeed;
     [SerializeField] private float damageAmount = 5;
-    [SerializeField] private float maxHealth;
+    [SerializeField] private float maxHealth = 10;
     
     [Header("Ground and Wall Detection")]
     [SerializeField] private LayerMask groundMask;
@@ -44,6 +44,16 @@ public class Enemy : PhysicsObject
         if (player)
         {
             player.ModifyHealth(-damageAmount);
+        }
+    }
+
+    public void ModifyHealth(float amount)
+    {
+        Mathf.Clamp(currentHealth += amount, 0, maxHealth);
+
+        if (currentHealth <= 0)
+        {
+            gameObject.SetActive(false);
         }
     }
     

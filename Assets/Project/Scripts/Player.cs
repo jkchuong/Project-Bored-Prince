@@ -1,7 +1,9 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Player : PhysicsObject
@@ -11,13 +13,12 @@ public class Player : PhysicsObject
     [SerializeField] private float jumpSpeed = 10f;
 
     [Header("Combat")]
+    [SerializeField] private float attackDamage;
     [SerializeField] private float specialAttackRadius = 1f;
 
     [Header("Stats")]
     [SerializeField] private float healthPercentage;
     [SerializeField] private int coinsCollected;
-    private event Action Buff;
-    private Dictionary<string, Sprite> inventory = new Dictionary<string, Sprite>();
     
     [Header("UI Elements")]
     [SerializeField] private TextMeshProUGUI coinsText;
@@ -29,8 +30,15 @@ public class Player : PhysicsObject
     [SerializeField] private Image buffImage;
     [SerializeField] private Sprite buffBlank;
     
+    private Dictionary<string, Sprite> inventory = new Dictionary<string, Sprite>();
+
     private const float HEALTH_MAX_PERCENTAGE = 100f;
     private Vector2 fullHealthBarSize;
+    
+    private AttackBox attackBox;
+    private SpecialAttackBox specialAttackBox;
+    private bool regularAttacking;
+    private bool specialAttacking;
     
     private protected override void Start()
     {
@@ -38,6 +46,16 @@ public class Player : PhysicsObject
 
         // Get original health bar size
         fullHealthBarSize = healthBar.rectTransform.sizeDelta;
+
+        // Get and deactivate attack box
+        attackBox = GetComponentInChildren<AttackBox>();
+        attackBox.DamageAmount = attackDamage;
+        attackBox.gameObject.SetActive(false);
+        
+        // Get and deactivate attack box
+        specialAttackBox = GetComponentInChildren<SpecialAttackBox>();
+        specialAttackBox.SetAttackSize(specialAttackRadius);
+        specialAttackBox.gameObject.SetActive(false);
         
         UpdateUI();
     }
@@ -49,6 +67,26 @@ public class Player : PhysicsObject
         if (Input.GetButton("Jump") && grounded)
         {
             velocity.y = jumpSpeed;
+        }
+
+        // TODO: Modify this in animator
+        if (targetVelocity.x > 0)
+        {
+            transform.localScale = new Vector2(1, 1);
+        }
+        else if (targetVelocity.x < 0)
+        {
+            transform.localScale = new Vector2(-1, 1);
+        }
+
+        if (Input.GetKeyDown(KeyCode.K) && !regularAttacking)
+        {
+            StartCoroutine(RegularAttack());
+        }
+
+        if (Input.GetKeyDown(KeyCode.O) && !specialAttacking)
+        {
+            StartCoroutine(SpecialAttack());
         }
     }
 
@@ -62,6 +100,26 @@ public class Player : PhysicsObject
         healthBar.rectTransform.sizeDelta = new Vector2(fullHealthBarSize.x * healthLength, fullHealthBarSize.y);
     }
     
+    private IEnumerator SpecialAttack()
+    {
+        // TODO: Match this to animator but using Animation Event to trigger - set true during swing and false end of swing
+        specialAttackBox.gameObject.SetActive(true);
+        specialAttacking = true;
+        yield return new WaitForSeconds(0.2f);
+        specialAttackBox.gameObject.SetActive(false);
+        specialAttacking = false;
+    }
+
+    private IEnumerator RegularAttack()
+    {
+        // TODO: Match this to animator but using Animation Event to trigger - set true during swing and false end of swing
+        attackBox.gameObject.SetActive(true);
+        regularAttacking = true;
+        yield return new WaitForSeconds(0.2f);
+        attackBox.gameObject.SetActive(false);
+        regularAttacking = false;
+    }
+    
     public void AddCoin()
     {
         coinsCollected++;
@@ -72,6 +130,17 @@ public class Player : PhysicsObject
     {
         healthPercentage = Mathf.Clamp(healthPercentage + healthChange, 0, 100);
         UpdateUI();
+
+        if (healthPercentage <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        // TODO: Create scene loader singleton
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void AddQuestItem(string itemName, Sprite itemSprite)
@@ -88,14 +157,8 @@ public class Player : PhysicsObject
 
     public void AddBuff(Action buffAbility, Sprite buffSprite)
     {
-        Buff = buffAbility;
+        specialAttackBox.SetBuff(buffAbility);
         buffImage.sprite = buffSprite;
-    }
-
-    public void RemoveBuff()
-    {
-        Buff = null;
-        buffImage.sprite = buffBlank;
     }
 
     public bool InventoryContains(string itemName)

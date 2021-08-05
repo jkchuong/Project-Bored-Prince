@@ -137,6 +137,8 @@ MonoBehaviour:
   minGroundNormalY: 0.65
   gravityModifier: 1
   maxSpeed: 1
+  damageAmount: 5
+  maxHealth: 10
   groundMask:
     serializedVersion: 2
     m_Bits: 64
