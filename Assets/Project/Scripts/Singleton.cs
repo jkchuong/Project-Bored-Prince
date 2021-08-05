@@ -1,9 +1,8 @@
-using System;
 using UnityEngine;
 
 /// <summary>
 /// Inherit from this base class to create a singleton.
-/// e.g. public class MyClassName : Singleton &lt;MyClassName&gt;  {}
+/// <example>public class MyClassName : Singleton&lt;MyClassName&gt;{   }</example> 
 /// </summary>
 public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 {
@@ -38,7 +37,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
                         // Need to create a new GameObject to attach the singleton to
                         var singletonObject = new GameObject();
                         m_Instance = singletonObject.AddComponent<T>();
-                        singletonObject.name = typeof(T).ToString() + " (Singleton)";
+                        singletonObject.name = typeof(T) + " (Singleton)";
                         
                         // Make instance persistent
                         DontDestroyOnLoad(singletonObject);
