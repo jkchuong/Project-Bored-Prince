@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class PhysicsObject : MonoBehaviour
 {
     [SerializeField] private float minGroundNormalY = 0.65f;
@@ -29,6 +30,8 @@ public class PhysicsObject : MonoBehaviour
         contactFilter.useTriggers = false;
         contactFilter.SetLayerMask(Physics2D.GetLayerCollisionMask(gameObject.layer)); // Set the contact filter
         contactFilter.useLayerMask = true;
+        
+        rb2d.gravityScale = 0;
     }
 
     private void Update()

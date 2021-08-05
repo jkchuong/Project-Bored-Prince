@@ -10,7 +10,7 @@ namespace Project.Scripts.Collectibles
         
         protected override void HandlePickUp(Player player)
         {
-            player.ChangeHealth(healAmount);
+            player.ModifyHealth(healAmount);
             
             Destroy(gameObject);
         }

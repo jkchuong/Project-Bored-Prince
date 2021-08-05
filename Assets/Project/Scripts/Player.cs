@@ -1,16 +1,17 @@
 using System;
 using System.Collections.Generic;
-using Project.Scripts.Collectibles;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Rigidbody2D))]
 public class Player : PhysicsObject
 {
     [Header("Movement")]
     [SerializeField] private float maxSpeed = 5f;
     [SerializeField] private float jumpSpeed = 10f;
+
+    [Header("Combat")]
+    [SerializeField] private float specialAttackRadius = 1f;
 
     [Header("Stats")]
     [SerializeField] private float healthPercentage;
@@ -34,7 +35,6 @@ public class Player : PhysicsObject
     private protected override void Start()
     {
         base.Start();
-        rb2d.gravityScale = 0;
 
         // Get original health bar size
         fullHealthBarSize = healthBar.rectTransform.sizeDelta;
@@ -68,7 +68,7 @@ public class Player : PhysicsObject
         UpdateUI();
     }
 
-    public void ChangeHealth(float healthChange)
+    public void ModifyHealth(float healthChange)
     {
         healthPercentage = Mathf.Clamp(healthPercentage + healthChange, 0, 100);
         UpdateUI();
@@ -102,4 +102,15 @@ public class Player : PhysicsObject
     {
         return inventory.ContainsKey(itemName);
     }
+
+#if UNITY_EDITOR
+    
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, specialAttackRadius);
+    }
+    
+#endif
+    
 }
