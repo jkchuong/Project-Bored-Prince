@@ -6,9 +6,9 @@ namespace Project.Scripts.Collectibles
     {
         public override BuffType BuffType => BuffType.Ice;
 
-        protected override void BuffAbility()
+        protected override void BuffAbility(Enemy enemy)
         {
-            Debug.Log("Ice Ability Activated");
+            Debug.Log("Ice Ability Activated on " + enemy.name);
         }
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpecialAttackBox : MonoBehaviour
 {
-    private event Action Buff;
+    private event Action<Enemy> Buff;
     
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -12,11 +12,11 @@ public class SpecialAttackBox : MonoBehaviour
 
         if (enemy)
         {
-            Buff?.Invoke();
+            Buff?.Invoke(enemy);
         }
     }
 
-    public void SetBuff(Action buffToSet)
+    public void SetBuff(Action<Enemy> buffToSet)
     {
         Buff = buffToSet;
     }

@@ -155,7 +155,7 @@ public class Player : PhysicsObject
         inventoryItemImage.sprite = inventoryBlankItem;
     }
 
-    public void AddBuff(Action buffAbility, Sprite buffSprite)
+    public void AddBuff(Action<Enemy> buffAbility, Sprite buffSprite)
     {
         specialAttackBox.SetBuff(buffAbility);
         buffImage.sprite = buffSprite;

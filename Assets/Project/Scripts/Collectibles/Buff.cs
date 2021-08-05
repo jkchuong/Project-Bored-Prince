@@ -25,7 +25,7 @@ namespace Project.Scripts.Collectibles
             Destroy(gameObject);
         }
         
-        protected abstract void BuffAbility();
+        protected abstract void BuffAbility(Enemy enemy);
     }
     
     public enum BuffType
