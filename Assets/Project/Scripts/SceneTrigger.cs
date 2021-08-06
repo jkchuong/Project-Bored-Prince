@@ -4,13 +4,13 @@ using UnityEngine.Events;
 
 public class SceneTrigger : MonoBehaviour
 {
-    public UnityEvent sceneTrigger;
-
+    [SerializeField] private string sceneName;
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            sceneTrigger?.Invoke();
+            SceneLoader.Instance.LoadScene(sceneName);
         }
     }
 }

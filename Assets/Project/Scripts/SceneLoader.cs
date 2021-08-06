@@ -1,10 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneLoader : Singleton<SceneLoader>
+public class SceneLoader : SingletonPersistent<SceneLoader>
 {
     private Scene currentScene;
 
@@ -15,31 +11,28 @@ public class SceneLoader : Singleton<SceneLoader>
         currentScene = SceneManager.GetActiveScene();
     }
 
-    public void LoadNextLevel()
+    public void LoadScene(string sceneName)
     {
-        Debug.Log("Current Scene is " + currentScene.name);
+        SceneManager.LoadScene(sceneName);
+    }
 
+    public void LoadNextSceneInBuild()
+    {
         int newSceneIndex = currentScene.buildIndex + 1;
         
         if (newSceneIndex < SceneManager.sceneCountInBuildSettings)
         { 
             SceneManager.LoadSceneAsync(currentScene.buildIndex + 1);
         }
-        
-        Debug.Log("Current Scene is " + currentScene.name);
     }
     
-    public void LoadPreviousLevel()
+    public void LoadPreviousSceneInBuild()
     {
-        Debug.Log("Current Scene is " + currentScene.name);
-
         int newSceneIndex = currentScene.buildIndex - 1;
 
         if (newSceneIndex < SceneManager.sceneCountInBuildSettings)
         { 
             SceneManager.LoadSceneAsync(currentScene.buildIndex - 1);
         }
-        
-        Debug.Log("Current Scene is " + currentScene.name);
     }
 }

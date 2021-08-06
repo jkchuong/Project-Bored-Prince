@@ -1,61 +1,58 @@
+using System;
 using UnityEngine;
 
 /// <summary>
-/// Inherit from this base class to create a singleton.
+/// Inherit from this base class to create a singleton that will create itself.
 /// <example>public class MyClassName : Singleton&lt;MyClassName&gt;{   }</example> 
 /// </summary>
-public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
+public class Singleton<T> : MonoBehaviour where T : Component
 {
-    // Check to see if we're about to be destroyed
-    private static bool mShuttingDown = false;
-    private static object m_Lock = new object();
-    private static T m_Instance;
-
-    public static T Instance
-    {
-        get
-        {
-            if (mShuttingDown)
+    private static T instance;
+    
+    public static T Instance {
+        get {
+            
+            if (instance == null)
             {
-                #if UNITY_EDITOR
-                Debug.LogWarning("[Singleton] Instance '" + typeof(T) + "' already destroyed. Returning null.");
-                #endif
+                var objs = FindObjectsOfType(typeof(T)) as T[];
                 
-                return null;
-            }
-
-            lock (m_Lock)
-            {
-                if (m_Instance == null)
+                if (objs.Length > 0)
+                    instance = objs[0];
+                
+                if (objs.Length > 1)
                 {
-                    // Search for exiting instance
-                    m_Instance = (T) FindObjectOfType(typeof(T));
-                    
-                    // Create new instance if one doesn't already exist
-                    if (m_Instance == null)
-                    {
-                        // Need to create a new GameObject to attach the singleton to
-                        var singletonObject = new GameObject();
-                        m_Instance = singletonObject.AddComponent<T>();
-                        singletonObject.name = typeof(T) + " (Singleton)";
-                        
-                        // Make instance persistent
-                        DontDestroyOnLoad(singletonObject);
-                    }
+                    Debug.LogError ("There is more than one " + typeof(T).Name + " in the scene.");
                 }
-
-                return m_Instance;
+                
+                if (instance == null)
+                {
+                    GameObject obj = new GameObject {hideFlags = HideFlags.HideAndDontSave};
+                    instance = obj.AddComponent<T> ();
+                }
             }
+            return instance;
         }
     }
+}
 
-    private void OnApplicationQuit()
+/// <summary>
+/// Inherit from this base class to create a persistent singleton.
+/// <example>public class MyClassName : SingletonPersistent&lt;MyClassName&gt;{   }</example> 
+/// </summary>
+public class SingletonPersistent<T> : MonoBehaviour where T : Component
+{
+    public static T Instance { get; private set; }
+	
+    public virtual void Awake ()
     {
-        mShuttingDown = true;
-    }
-
-    private void OnDestroy()
-    {
-        mShuttingDown = true;
+        if (Instance == null)
+        {
+            Instance = this as T;
+            DontDestroyOnLoad (this);
+        } 
+        else 
+        {
+            Destroy (gameObject);
+        }
     }
 }
