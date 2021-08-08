@@ -10,21 +10,22 @@ public class SceneLoader : SingletonPersistent<SceneLoader>
 
     public void ReloadScene()
     {
-        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Additive);
+        LoadScene(SceneManager.GetActiveScene().name);
     }
     
-    public void LoadScene(Scenes sceneName)
+    public void LoadScene(string sceneName)
     {
-        if (SceneManager.GetSceneByName(sceneName.ToString()).isLoaded)
-            return;
-     
         SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
         
-        // Place loading screen here
-        
-        // Load new scene additively and set it as the active scene when loaded
-        SceneManager.LoadSceneAsync(sceneName.ToString(), LoadSceneMode.Additive).completed +=
-            operation => SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName.ToString()));
+        // TODO: Loading screen
+        // Load loading screen canvas
+        // Switch to UI camera
+        // Load new level
+        // Switch to level camera
+        // Remove loading screen
+
+        SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive).completed +=
+            operation => SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
     }
 
     public void LoadUIScene()
@@ -37,7 +38,6 @@ public class SceneLoader : SingletonPersistent<SceneLoader>
 
     public void UnloadUIScene()
     {
-
         SceneManager.UnloadSceneAsync(Scenes.UI.ToString());
     }
 }

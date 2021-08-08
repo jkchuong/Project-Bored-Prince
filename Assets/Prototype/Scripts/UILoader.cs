@@ -1,19 +1,48 @@
-using System;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class UILoader : MonoBehaviour
+namespace Prototype.Scripts
 {
-    [SerializeField] private bool shouldLoadUI;
-    
-    private void Start()
+    public class UILoader : MonoBehaviour
     {
-        if (shouldLoadUI)
+        private void Update()
         {
-            SceneLoader.Instance.LoadUIScene();
+            if (Input.GetKeyDown(KeyCode.F1))
+            {
+                if (SceneManager.GetSceneByName("UI").isLoaded == false)
+                    SceneManager.LoadSceneAsync("UI", LoadSceneMode.Additive);
+                else
+                    SceneManager.UnloadSceneAsync("UI");
+            }
+
+            if (Input.GetKeyDown(KeyCode.F3))
+            {
+                if (SceneManager.GetSceneByName("Level2").isLoaded)
+                    SceneManager.UnloadSceneAsync("Level2");
+
+                if (SceneManager.GetSceneByName("Level1").isLoaded == false)
+                {
+                    SceneManager.LoadSceneAsync("Level1", LoadSceneMode.Additive).completed += operation => 
+                        SceneManager.SetActiveScene(SceneManager.GetSceneByName("Level1"));
+                }
+            }
+        
+            if (Input.GetKeyDown(KeyCode.F4))
+            {
+                if (SceneManager.GetSceneByName("Level1").isLoaded)
+                    SceneManager.UnloadSceneAsync("Level1");
+
+                if (SceneManager.GetSceneByName("Level2").isLoaded == false)
+                {
+                    SceneManager.LoadSceneAsync("Level2", LoadSceneMode.Additive)
+                        .completed += HandleLevel2LoadCompleted;
+                }
+            }
         }
-        else
+
+        private void HandleLevel2LoadCompleted(AsyncOperation obj)
         {
-            SceneLoader.Instance.UnloadUIScene();
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName("Level2"));
         }
     }
 }
