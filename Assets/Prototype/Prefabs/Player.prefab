@@ -321,6 +321,6 @@ MonoBehaviour:
   coinsText: {fileID: 0}
   healthBar: {fileID: 0}
   inventoryItemImage: {fileID: 0}
-  inventoryBlankItem: {fileID: 8542337794519398920, guid: fef0eca6c26525d4eb3808d38c4d2eed, type: 3}
+  inventoryBlankItem: {fileID: 0}
   buffImage: {fileID: 0}
-  buffBlank: {fileID: -2890374716496177641, guid: fef0eca6c26525d4eb3808d38c4d2eed, type: 3}
+  buffBlank: {fileID: 0}

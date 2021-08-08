@@ -1,52 +1,50 @@
+using System;
+using System.Linq;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
 public class SceneLoader : SingletonPersistent<SceneLoader>
 {
-    private Scene currentScene;
-
     protected SceneLoader() {}
-
-    private void OnEnable()
-    {
-        SetSceneToActiveScene();
-    }
 
     public void ReloadScene()
     {
-        SceneManager.LoadScene(currentScene.buildIndex);
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Additive);
     }
     
-    public void LoadScene(string sceneName)
+    public void LoadScene(Scenes sceneName)
     {
-        SceneManager.LoadScene(sceneName);
-        SetSceneToActiveScene();
+        if (SceneManager.GetSceneByName(sceneName.ToString()).isLoaded)
+            return;
+     
+        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
+        
+        // Place loading screen here
+        
+        // Load new scene additively and set it as the active scene when loaded
+        SceneManager.LoadSceneAsync(sceneName.ToString(), LoadSceneMode.Additive).completed +=
+            operation => SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName.ToString()));
     }
 
-    public void LoadNextSceneInBuild()
+    public void LoadUIScene()
     {
-        int newSceneIndex = currentScene.buildIndex + 1;
-    
-        if (newSceneIndex < SceneManager.sceneCountInBuildSettings)
-        { 
-            SceneManager.LoadScene(currentScene.buildIndex + 1);
-            SetSceneToActiveScene();
+        if (!SceneManager.GetSceneByName(Scenes.UI.ToString()).isLoaded)
+        {
+            SceneManager.LoadSceneAsync(Scenes.UI.ToString(), LoadSceneMode.Additive);
         }
     }
 
-    public void LoadPreviousSceneInBuild()
+    public void UnloadUIScene()
     {
-        int newSceneIndex = currentScene.buildIndex - 1;
 
-        if (newSceneIndex < SceneManager.sceneCountInBuildSettings)
-        { 
-            SceneManager.LoadScene(currentScene.buildIndex - 1);
-            SetSceneToActiveScene();
-        }
+        SceneManager.UnloadSceneAsync(Scenes.UI.ToString());
     }
+}
 
-    private void SetSceneToActiveScene()
-    {
-        currentScene = SceneManager.GetActiveScene();
-    }
+public enum Scenes
+{
+    Prototype1,
+    Prototype2,
+    UI
 }

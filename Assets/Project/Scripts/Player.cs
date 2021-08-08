@@ -19,15 +19,15 @@ public class Player : PhysicsObject
     [SerializeField] private float healthPercentage;
     [SerializeField] private int coinsCollected;
     
-    [Header("UI Elements")]
-    [SerializeField] private TextMeshProUGUI coinsText;
-    [SerializeField] private Image healthBar;
-    [Space]
-    [SerializeField] private Image inventoryItemImage;
-    [SerializeField] private Sprite inventoryBlankItem;
-    [Space]
-    [SerializeField] private Image buffImage;
-    [SerializeField] private Sprite buffBlank;
+    // [Header("UI Elements")]
+    // [SerializeField] private TextMeshProUGUI coinsText;
+    // [SerializeField] private Image healthBar;
+    // [Space]
+    // [SerializeField] private Image inventoryItemImage;
+    // [SerializeField] private Sprite inventoryBlankItem;
+    // [Space]
+    // [SerializeField] private Image buffImage;
+    // [SerializeField] private Sprite buffBlank;
     
     private Dictionary<string, Sprite> inventory = new Dictionary<string, Sprite>();
 
@@ -44,7 +44,7 @@ public class Player : PhysicsObject
         base.Start();
 
         // Get original health bar size
-        fullHealthBarSize = healthBar.rectTransform.sizeDelta;
+        // fullHealthBarSize = healthBar.rectTransform.sizeDelta;
 
         // Get and deactivate attack box
         attackBox = GetComponentInChildren<AttackBox>();
@@ -56,7 +56,7 @@ public class Player : PhysicsObject
         specialAttackBox.SetAttackSize(specialAttackRadius);
         specialAttackBox.gameObject.SetActive(false);
         
-        UpdateUI();
+        // UpdateUI();
     }
 
     private void Update()
@@ -89,15 +89,15 @@ public class Player : PhysicsObject
         }
     }
 
-    private void UpdateUI()
-    {
-        // Update Coins
-        coinsText.text = "Coins: " + coinsCollected;
-
-        // Update Health
-        float healthLength = healthPercentage / HEALTH_MAX_PERCENTAGE;
-        healthBar.rectTransform.sizeDelta = new Vector2(fullHealthBarSize.x * healthLength, fullHealthBarSize.y);
-    }
+    // private void UpdateUI()
+    // {
+    //     // Update Coins
+    //     coinsText.text = "Coins: " + coinsCollected;
+    //
+    //     // Update Health
+    //     float healthLength = healthPercentage / HEALTH_MAX_PERCENTAGE;
+    //     healthBar.rectTransform.sizeDelta = new Vector2(fullHealthBarSize.x * healthLength, fullHealthBarSize.y);
+    // }
     
     private IEnumerator SpecialAttack()
     {
@@ -119,44 +119,44 @@ public class Player : PhysicsObject
         regularAttacking = false;
     }
     
+    private void Die()
+    {
+        SceneLoader.Instance.ReloadScene();
+    }
+    
     public void AddCoin()
     {
         coinsCollected++;
-        UpdateUI();
+        // UpdateUI();
     }
-
+    
     public void ModifyHealth(float healthChange)
     {
         healthPercentage = Mathf.Clamp(healthPercentage + healthChange, 0, 100);
-        UpdateUI();
-
+        // UpdateUI();
+    
         if (healthPercentage <= 0)
         {
             Die();
         }
     }
 
-    private void Die()
-    {
-        SceneLoader.Instance.ReloadScene();
-    }
-
     public void AddQuestItem(string itemName, Sprite itemSprite)
     {
         inventory.Add(itemName, itemSprite);
-        inventoryItemImage.sprite = inventory[itemName];
+        // inventoryItemImage.sprite = inventory[itemName];
     }
     
     public void RemoveQuestItem(string itemName)
     {
         inventory.Remove(itemName);
-        inventoryItemImage.sprite = inventoryBlankItem;
+        // inventoryItemImage.sprite = inventoryBlankItem;
     }
-
+    
     public void AddBuff(Action<LeftRightEnemy> buffAbility, Sprite buffSprite)
     {
         specialAttackBox.SetBuff(buffAbility);
-        buffImage.sprite = buffSprite;
+        // buffImage.sprite = buffSprite;
     }
 
     public bool InventoryContains(string itemName)

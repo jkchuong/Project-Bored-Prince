@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 public class SceneTrigger : MonoBehaviour
 {
-    [SerializeField] private string sceneName;
+    [SerializeField] private Scenes sceneName;
     
     private void OnTriggerEnter2D(Collider2D other)
     {
