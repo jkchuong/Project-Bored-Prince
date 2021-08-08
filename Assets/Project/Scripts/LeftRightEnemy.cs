@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class Enemy : PhysicsObject
+public class LeftRightEnemy : PhysicsObject
 {
     [Header("Stats")]
     [SerializeField] private float maxSpeed;

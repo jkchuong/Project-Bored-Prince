@@ -9,12 +9,18 @@ public class SceneLoader : SingletonPersistent<SceneLoader>
 
     private void OnEnable()
     {
-        currentScene = SceneManager.GetActiveScene();
+        SetSceneToActiveScene();
     }
 
+    public void ReloadScene()
+    {
+        SceneManager.LoadScene(currentScene.buildIndex);
+    }
+    
     public void LoadScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
+        SetSceneToActiveScene();
     }
 
     public void LoadNextSceneInBuild()
@@ -23,7 +29,8 @@ public class SceneLoader : SingletonPersistent<SceneLoader>
     
         if (newSceneIndex < SceneManager.sceneCountInBuildSettings)
         { 
-            SceneManager.LoadSceneAsync(currentScene.buildIndex + 1);
+            SceneManager.LoadScene(currentScene.buildIndex + 1);
+            SetSceneToActiveScene();
         }
     }
 
@@ -33,7 +40,13 @@ public class SceneLoader : SingletonPersistent<SceneLoader>
 
         if (newSceneIndex < SceneManager.sceneCountInBuildSettings)
         { 
-            SceneManager.LoadSceneAsync(currentScene.buildIndex - 1);
+            SceneManager.LoadScene(currentScene.buildIndex - 1);
+            SetSceneToActiveScene();
         }
+    }
+
+    private void SetSceneToActiveScene()
+    {
+        currentScene = SceneManager.GetActiveScene();
     }
 }

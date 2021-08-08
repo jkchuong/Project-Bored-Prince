@@ -6,9 +6,9 @@ namespace Project.Scripts.Collectibles
     {
         public override BuffType BuffType => BuffType.Vine;
 
-        protected override void BuffAbility(Enemy enemy)
+        protected override void BuffAbility(LeftRightEnemy leftRightEnemy)
         {
-            Debug.Log("Vine Ability Activated on " + enemy.name);
+            Debug.Log("Vine Ability Activated on " + leftRightEnemy.name);
         }
     }
 }

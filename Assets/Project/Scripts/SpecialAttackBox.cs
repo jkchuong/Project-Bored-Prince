@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class SpecialAttackBox : MonoBehaviour
 {
-    private event Action<Enemy> Buff;
+    private event Action<LeftRightEnemy> Buff;
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Enemy enemy = other.GetComponent<Enemy>();
+        LeftRightEnemy leftRightEnemy = other.GetComponent<LeftRightEnemy>();
 
-        if (enemy)
+        if (leftRightEnemy)
         {
-            Buff?.Invoke(enemy);
+            Buff?.Invoke(leftRightEnemy);
         }
     }
 
-    public void SetBuff(Action<Enemy> buffToSet)
+    public void SetBuff(Action<LeftRightEnemy> buffToSet)
     {
         Buff = buffToSet;
     }

@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Player : PhysicsObject
@@ -139,8 +138,7 @@ public class Player : PhysicsObject
 
     private void Die()
     {
-        // TODO: Create scene loader singleton
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneLoader.Instance.ReloadScene();
     }
 
     public void AddQuestItem(string itemName, Sprite itemSprite)
@@ -155,7 +153,7 @@ public class Player : PhysicsObject
         inventoryItemImage.sprite = inventoryBlankItem;
     }
 
-    public void AddBuff(Action<Enemy> buffAbility, Sprite buffSprite)
+    public void AddBuff(Action<LeftRightEnemy> buffAbility, Sprite buffSprite)
     {
         specialAttackBox.SetBuff(buffAbility);
         buffImage.sprite = buffSprite;

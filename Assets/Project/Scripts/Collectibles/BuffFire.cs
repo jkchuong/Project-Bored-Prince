@@ -6,9 +6,9 @@ namespace Project.Scripts.Collectibles
     {
         public override BuffType BuffType => BuffType.Fire;
 
-        protected override void BuffAbility(Enemy enemy)
+        protected override void BuffAbility(LeftRightEnemy leftRightEnemy)
         {
-            Debug.Log("Fire Ability Activated on " + enemy.name);
+            Debug.Log("Fire Ability Activated on " + leftRightEnemy.name);
         }
     }
 }
