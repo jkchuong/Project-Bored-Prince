@@ -7,11 +7,11 @@ public class AttackBox : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        LeftRightEnemy leftRightEnemy = other.GetComponent<LeftRightEnemy>();
+        Enemy enemy = other.GetComponent<Enemy>();
 
-        if (leftRightEnemy)
+        if (enemy)
         {
-            leftRightEnemy.ModifyHealth(-DamageAmount);
+            enemy.Health.ModifyHealth(-DamageAmount);
         }
     }
 }

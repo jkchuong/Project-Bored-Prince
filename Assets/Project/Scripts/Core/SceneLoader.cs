@@ -34,26 +34,22 @@ public class SceneLoader : SingletonPersistent<SceneLoader>
         // Unload old scene
         SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
 
-        Debug.Log("Loading scene async");
+        Debug.Log("Unloading scene async");
 
         // Load new scene
         AsyncOperation asyncOperation =  SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
         
-       asyncOperation.completed += 
+        Debug.Log("Loading Scene Async");
+
+        asyncOperation.completed += 
             operation => SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
 
-       yield return asyncOperation;
-       
-       Debug.Log("Waiting for scene to finish"); // Not running
+        Debug.Log("Waiting for loading to finish");
 
-       while (!asyncOperation.isDone)
-       {
-           Debug.Log("In while loop");
-
-           yield return null;
-       }
+        // yield return asyncOperation;
+        yield return new WaitForSeconds(1f);
         
-        Debug.Log("Finished loading");
+        Debug.Log("Finished loading"); // Not logged in console
         
         // Switch to level camera
         loadingCamera.SetActive(false);

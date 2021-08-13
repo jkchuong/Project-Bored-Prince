@@ -1,12 +1,11 @@
 using System;
 using UnityEngine;
 
-public class LeftRightEnemy : PhysicsObject
+public class LeftRightEnemy : Enemy
 {
     [Header("Stats")]
     [SerializeField] private float maxSpeed;
     [SerializeField] private float damageAmount = 5;
-    [SerializeField] private float maxHealth = 10;
     
     [Header("Ground and Wall Detection")]
     [SerializeField] private LayerMask groundMask;
@@ -21,14 +20,7 @@ public class LeftRightEnemy : PhysicsObject
     private RaycastHit2D rightWallRaycastHit;
     private RaycastHit2D leftWallRaycastHit;
 
-    private float currentHealth;
     private int direction = 1;
-
-    private protected override void Start()
-    {
-        base.Start();
-        currentHealth = maxHealth;
-    }
 
     private void Update()
     {
@@ -47,16 +39,6 @@ public class LeftRightEnemy : PhysicsObject
         }
     }
 
-    public void ModifyHealth(float amount)
-    {
-        Mathf.Clamp(currentHealth += amount, 0, maxHealth);
-
-        if (currentHealth <= 0)
-        {
-            gameObject.SetActive(false);
-        }
-    }
-    
     private void CheckLedgesAndWalls()
     {
         Vector2 position = transform.position;

@@ -5,7 +5,6 @@ using Project.Scripts.Collectibles;
 using Project.Scripts.UI;
 using UnityEngine;
 
-[RequireComponent(typeof(Health))]
 public class Player : PhysicsObject
 {
     [Header("Movement")]
@@ -52,6 +51,13 @@ public class Player : PhysicsObject
 
         // Bind player to UI
         FindObjectOfType<GameUI>()?.BindPlayer(this);
+        
+        Health.DoDeath += HealthOnDoDeath;
+    }
+
+    private void HealthOnDoDeath()
+    {
+        SceneLoader.Instance.ReloadScene();
     }
 
     private void Update()
