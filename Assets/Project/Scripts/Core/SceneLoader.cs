@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -6,26 +7,61 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : SingletonPersistent<SceneLoader>
 {
-    protected SceneLoader() {}
+    [SerializeField] private GameObject loadingCamera;
+    [SerializeField] private GameObject CircleWipe;
 
+    [SerializeField] private Animator transition;
+    [SerializeField] private float transitionTime = 1f;
+    
     public void ReloadScene()
     {
-        LoadScene(SceneManager.GetActiveScene().name);
+        StartCoroutine(LoadScene(SceneManager.GetActiveScene().name));
     }
     
-    public void LoadScene(string sceneName)
+    public IEnumerator LoadScene(string sceneName)
     {
-        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
         
-        // TODO: Loading screen
-        // Load loading screen canvas
-        // Switch to UI camera
-        // Load new level
-        // Switch to level camera
-        // Remove loading screen
+        // TODO: Replace with LeanTween
+        // Move loading screen canvas
+        transition.SetTrigger("Start");
+        
+        // Wait for loading screen
+        yield return new WaitForSeconds(0.5f);
+        
+        // Switch to loading camera
+        loadingCamera.SetActive(true);
 
-        SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive).completed +=
+        // Unload old scene
+        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
+
+        Debug.Log("Loading scene async");
+
+        // Load new scene
+        AsyncOperation asyncOperation =  SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+        
+       asyncOperation.completed += 
             operation => SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
+
+       yield return asyncOperation;
+       
+       Debug.Log("Waiting for scene to finish"); // Not running
+
+       while (!asyncOperation.isDone)
+       {
+           Debug.Log("In while loop");
+
+           yield return null;
+       }
+        
+        Debug.Log("Finished loading");
+        
+        // Switch to level camera
+        loadingCamera.SetActive(false);
+        
+        Debug.Log("Switching loading camera off");
+        
+        // Remove loading screen
+        transition.SetTrigger("End");
     }
 
     public void LoadUIScene()

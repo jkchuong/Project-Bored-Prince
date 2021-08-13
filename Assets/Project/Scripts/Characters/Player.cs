@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Project.Scripts.Collectibles;
+using Project.Scripts.UI;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,23 +20,23 @@ public class Player : PhysicsObject
     [Header("Stats")]
     [SerializeField] private float healthPercentage;
     [SerializeField] private int coinsCollected;
+    [SerializeField] private BuffType buffType = BuffType.Blank;
 
     private Dictionary<string, Sprite> inventory = new Dictionary<string, Sprite>();
-
-    private const float HEALTH_MAX_PERCENTAGE = 100f;
-    private Vector2 fullHealthBarSize;
     
     private AttackBox attackBox;
     private SpecialAttackBox specialAttackBox;
     private bool regularAttacking;
     private bool specialAttacking;
+
+    public event Action<int> OnCoinsChanged;
+    public event Action<float> OnHealthChanged;
+    public event Action<Sprite> OnBuffChanged;
+    public event Action<Sprite> OnInventoryChanged;
     
     private protected override void Start()
     {
         base.Start();
-
-        // Get original health bar size
-        // fullHealthBarSize = healthBar.rectTransform.sizeDelta;
 
         // Get and deactivate attack box
         attackBox = GetComponentInChildren<AttackBox>();
@@ -46,7 +48,19 @@ public class Player : PhysicsObject
         specialAttackBox.SetAttackSize(specialAttackRadius);
         specialAttackBox.gameObject.SetActive(false);
         
-        // UpdateUI();
+        // Bind player to UI
+        FindObjectOfType<GameUI>()?.BindPlayer(this);
+        
+        UpdateUI();
+    }
+
+    public void UpdateUI()
+    {
+        OnHealthChanged?.Invoke(healthPercentage);
+        OnCoinsChanged?.Invoke(coinsCollected);
+        //TODO: Pass buff information and inventory information
+        // OnBuffChanged?.Invoke()
+        // OnInventoryChanged?.Invoke();
     }
 
     private void Update()
@@ -79,16 +93,6 @@ public class Player : PhysicsObject
         }
     }
 
-    // private void UpdateUI()
-    // {
-    //     // Update Coins
-    //     coinsText.text = "Coins: " + coinsCollected;
-    //
-    //     // Update Health
-    //     float healthLength = healthPercentage / HEALTH_MAX_PERCENTAGE;
-    //     healthBar.rectTransform.sizeDelta = new Vector2(fullHealthBarSize.x * healthLength, fullHealthBarSize.y);
-    // }
-    
     private IEnumerator SpecialAttack()
     {
         // TODO: Match this to animator but using Animation Event to trigger - set true during swing and false end of swing
@@ -113,18 +117,18 @@ public class Player : PhysicsObject
     {
         SceneLoader.Instance.ReloadScene();
     }
-    
+
     public void AddCoin()
     {
         coinsCollected++;
-        // UpdateUI();
+        OnCoinsChanged?.Invoke(coinsCollected);
     }
     
     public void ModifyHealth(float healthChange)
     {
         healthPercentage = Mathf.Clamp(healthPercentage + healthChange, 0, 100);
-        // UpdateUI();
-    
+        OnHealthChanged?.Invoke(healthPercentage);
+        
         if (healthPercentage <= 0)
         {
             Die();
@@ -134,19 +138,20 @@ public class Player : PhysicsObject
     public void AddQuestItem(string itemName, Sprite itemSprite)
     {
         inventory.Add(itemName, itemSprite);
-        // inventoryItemImage.sprite = inventory[itemName];
+        OnInventoryChanged?.Invoke(itemSprite);
     }
     
     public void RemoveQuestItem(string itemName)
     {
         inventory.Remove(itemName);
-        // inventoryItemImage.sprite = inventoryBlankItem;
+        OnInventoryChanged?.Invoke(null);
     }
     
-    public void AddBuff(Action<LeftRightEnemy> buffAbility, Sprite buffSprite)
+    public void AddBuff(Action<LeftRightEnemy> buffAbility, Sprite buffSprite, BuffType buffType)
     {
         specialAttackBox.SetBuff(buffAbility);
-        // buffImage.sprite = buffSprite;
+        this.buffType = buffType;
+        OnBuffChanged?.Invoke(buffSprite);
     }
 
     public bool InventoryContains(string itemName)

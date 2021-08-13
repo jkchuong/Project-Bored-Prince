@@ -98,7 +98,7 @@ ScriptedImporter:
     border: {x: 25, y: 25, z: 25, w: 25}
     rect:
       serializedVersion: 2
-      x: 4
+      x: 1466
       y: 2172
       width: 654
       height: 136
@@ -112,7 +112,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -96, y: 221}
+    uvTransform: {x: 1366, y: 221}
   - name: Background (Reference)
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -289,6 +289,28 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: 2876, y: -1686}
+  - name: CircleWipe
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 2172
+      width: 1454
+      height: 1454
+    spriteID: 68f470185a9f8d74d9827f7a85cba95f
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -2308, y: 2138}
   platformSettings:
   - name: DefaultTexturePlatform
     overridden: 0
@@ -352,6 +374,13 @@ ScriptedImporter:
   characterMode: 1
   mosaicPSDLayers: []
   rigPSDLayers:
+  - name: CircleWipe
+    spriteName: CircleWipe
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 68f470185a9f8d74d9827f7a85cba95f
+    layerID: 41
+    mosaicPosition: {x: 4, y: 2172}
   - name: No Buff Icon
     spriteName: No Buff Icon
     isGroup: 0
@@ -400,7 +429,7 @@ ScriptedImporter:
     parentIndex: -1
     spriteID: 6416e60f2224e664398da112c9b95fe2
     layerID: 3
-    mosaicPosition: {x: 4, y: 2172}
+    mosaicPosition: {x: 1466, y: 2172}
   - name: Inventory Blank
     spriteName: Inventory Blank
     isGroup: 0

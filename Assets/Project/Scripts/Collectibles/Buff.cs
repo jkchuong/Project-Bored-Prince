@@ -20,7 +20,7 @@ namespace Project.Scripts.Collectibles
 
         protected override void HandlePickUp(Player player)
         {
-            player.AddBuff(BuffAbility, buffImageUI);
+            player.AddBuff(BuffAbility, buffImageUI, BuffType);
             
             Destroy(gameObject);
         }
@@ -30,6 +30,7 @@ namespace Project.Scripts.Collectibles
     
     public enum BuffType
     {
+        Blank,
         Fire,
         Ice,
         Vine

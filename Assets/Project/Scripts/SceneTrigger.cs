@@ -10,7 +10,7 @@ public class SceneTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            SceneLoader.Instance.LoadScene(sceneName.ToString());
+            StartCoroutine(SceneLoader.Instance.LoadScene(sceneName.ToString()));
         }
     }
 }
