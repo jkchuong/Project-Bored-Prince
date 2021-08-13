@@ -43,7 +43,7 @@ public class LeftRightEnemy : PhysicsObject
 
         if (player)
         {
-            player.ModifyHealth(-damageAmount);
+            player.Health.ModifyHealth(-damageAmount);
         }
     }
 

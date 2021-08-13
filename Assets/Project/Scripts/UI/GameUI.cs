@@ -28,8 +28,6 @@ namespace Project.Scripts.UI
             
             if (!boundPlayer)
                 return;
-            
-            boundPlayer.UpdateUI();
         }
 
         private void OnDestroy()
@@ -49,7 +47,7 @@ namespace Project.Scripts.UI
             if (boundPlayer == null)
                 return;
             
-            boundPlayer.OnHealthChanged += HandleHealthChanged;
+            boundPlayer.Health.OnHealthChanged += HandleHealthChanged;
             boundPlayer.OnCoinsChanged += HandleCoinChanged;
             boundPlayer.OnBuffChanged += HandleBuffChanged;
             boundPlayer.OnInventoryChanged += HandleInventoryChanged;
@@ -60,14 +58,14 @@ namespace Project.Scripts.UI
             if (boundPlayer == null)
                 return;
             
-            boundPlayer.OnHealthChanged -= HandleHealthChanged;
+            boundPlayer.Health.OnHealthChanged -= HandleHealthChanged;
             boundPlayer.OnCoinsChanged -= HandleCoinChanged;
             boundPlayer.OnBuffChanged -= HandleBuffChanged;
         }
 
         private void HandleHealthChanged(float healthPercentage)
         {
-            healthBar.rectTransform.sizeDelta = new Vector2(fullHealthBarSize.x * (healthPercentage/100), fullHealthBarSize.y);
+            healthBar.rectTransform.sizeDelta = new Vector2(fullHealthBarSize.x * healthPercentage, fullHealthBarSize.y);
         }
 
         private void HandleCoinChanged(int coinAmount)
