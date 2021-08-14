@@ -128,7 +128,7 @@ public class Player : PhysicsObject
         OnInventoryChanged?.Invoke(null);
     }
     
-    public void AddBuff(Action<LeftRightEnemy> buffAbility, Sprite buffSprite, BuffType buffType)
+    public void AddBuff(Action<Enemy, float, float> buffAbility, Sprite buffSprite, BuffType buffType)
     {
         specialAttackBox.SetBuff(buffAbility);
         this.buffType = buffType;

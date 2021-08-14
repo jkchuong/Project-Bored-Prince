@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class SceneTrigger : MonoBehaviour
 {
@@ -10,7 +8,7 @@ public class SceneTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            StartCoroutine(SceneLoader.Instance.LoadScene(sceneName.ToString()));
+            SceneLoader.Instance.LoadScene(sceneName.ToString());
         }
     }
 }

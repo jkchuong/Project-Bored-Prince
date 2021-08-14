@@ -6,9 +6,9 @@ namespace Project.Scripts.Collectibles
     {
         public override BuffType BuffType => BuffType.Ice;
 
-        protected override void BuffAbility(LeftRightEnemy leftRightEnemy)
+        protected override void BuffAbility(Enemy enemy, float effectFactor, float effectDuration)
         {
-            Debug.Log("Ice Ability Activated on " + leftRightEnemy.name);
+            Debug.Log("Ice Ability Activated on " + enemy.name);
         }
     }
 }

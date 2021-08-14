@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 namespace Project.Scripts.Collectibles
@@ -6,9 +7,15 @@ namespace Project.Scripts.Collectibles
     {
         public override BuffType BuffType => BuffType.Fire;
 
-        protected override void BuffAbility(LeftRightEnemy leftRightEnemy)
+        protected override void BuffAbility(Enemy enemy, float effectFactor, float effectDuration)
         {
-            Debug.Log("Fire Ability Activated on " + leftRightEnemy.name);
+            Debug.Log("Fire Ability Activated on " + enemy.name);
+            // StartCoroutine(FireAttack(enemy));
+        }
+
+        private void FireAttack(Enemy enemy)
+        {
+            // TODO: Have total damage over time in inspector?
         }
     }
 }

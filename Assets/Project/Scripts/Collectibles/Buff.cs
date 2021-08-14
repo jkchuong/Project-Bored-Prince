@@ -25,7 +25,7 @@ namespace Project.Scripts.Collectibles
             Destroy(gameObject);
         }
         
-        protected abstract void BuffAbility(LeftRightEnemy leftRightEnemy);
+        protected abstract void BuffAbility(Enemy enemy, float effectFactor, float effectDuration);
     }
     
     public enum BuffType

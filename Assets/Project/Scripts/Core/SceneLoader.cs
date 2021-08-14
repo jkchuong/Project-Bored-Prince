@@ -15,46 +15,38 @@ public class SceneLoader : SingletonPersistent<SceneLoader>
     
     public void ReloadScene()
     {
-        StartCoroutine(LoadScene(SceneManager.GetActiveScene().name));
+        StartCoroutine(LoadSceneAsync(SceneManager.GetActiveScene().name));
     }
-    
-    public IEnumerator LoadScene(string sceneName)
+
+    public void LoadScene(string sceneName)
     {
-        
-        // TODO: Replace with LeanTween
+        StartCoroutine(LoadSceneAsync(sceneName));
+    }
+
+    private IEnumerator LoadSceneAsync(string sceneName)
+    {
         // Move loading screen canvas
         transition.SetTrigger("Start");
         
         // Wait for loading screen
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(transitionTime);
         
         // Switch to loading camera
         loadingCamera.SetActive(true);
 
         // Unload old scene
         SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
-
-        Debug.Log("Unloading scene async");
-
+        
         // Load new scene
         AsyncOperation asyncOperation =  SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
         
-        Debug.Log("Loading Scene Async");
-
         asyncOperation.completed += 
             operation => SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
-
-        Debug.Log("Waiting for loading to finish");
-
-        // yield return asyncOperation;
-        yield return new WaitForSeconds(1f);
         
-        Debug.Log("Finished loading"); // Not logged in console
-        
+        yield return asyncOperation;
+
         // Switch to level camera
         loadingCamera.SetActive(false);
-        
-        Debug.Log("Switching loading camera off");
         
         // Remove loading screen
         transition.SetTrigger("End");
