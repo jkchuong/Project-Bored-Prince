@@ -1,15 +1,13 @@
-using System;
 using System.Collections;
-using System.Linq;
 using Project.Scripts.Core;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using DG.Tweening;
 
 public class SceneLoader : SingletonPersistent<SceneLoader>
 {
     [SerializeField] private GameObject loadingCamera;
-    [SerializeField] private GameObject CircleWipe;
+    [SerializeField] private RectTransform CircleWipe;
 
     [SerializeField] private Animator transition;
     [SerializeField] private float transitionTime = 1f;
@@ -26,6 +24,7 @@ public class SceneLoader : SingletonPersistent<SceneLoader>
 
     private IEnumerator LoadSceneAsync(string sceneName)
     {
+        // TODO: Replace with DOTween
         // Move loading screen canvas
         transition.SetTrigger("Start");
         
