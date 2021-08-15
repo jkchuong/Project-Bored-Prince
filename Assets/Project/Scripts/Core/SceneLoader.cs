@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Project.Scripts.Core;
 using UnityEngine;
@@ -6,12 +7,21 @@ using DG.Tweening;
 
 public class SceneLoader : SingletonPersistent<SceneLoader>
 {
-    [SerializeField] private GameObject loadingCamera;
-    [SerializeField] private RectTransform CircleWipe;
+    [SerializeField] private Camera loadingCamera;
+    [SerializeField] private RectTransform circleWipe;
 
     [SerializeField] private Animator transition;
     [SerializeField] private float transitionTime = 1f;
-    
+
+    private float circleWipeWidth;
+    private float halfCameraWidth;
+
+    private void Start()
+    {
+        circleWipeWidth = circleWipe.sizeDelta.x;
+        halfCameraWidth = loadingCamera.aspect * loadingCamera.orthographicSize;
+    }
+
     public void ReloadScene()
     {
         StartCoroutine(LoadSceneAsync(SceneManager.GetActiveScene().name));
@@ -27,12 +37,13 @@ public class SceneLoader : SingletonPersistent<SceneLoader>
         // TODO: Replace with DOTween
         // Move loading screen canvas
         transition.SetTrigger("Start");
+        // circleWipe.DOMoveX(0f, 3f, false);
         
         // Wait for loading screen
         yield return new WaitForSeconds(transitionTime);
         
         // Switch to loading camera
-        loadingCamera.SetActive(true);
+        loadingCamera.enabled = true;
 
         // Unload old scene
         SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
@@ -46,7 +57,7 @@ public class SceneLoader : SingletonPersistent<SceneLoader>
         yield return asyncOperation;
 
         // Switch to level camera
-        loadingCamera.SetActive(false);
+        loadingCamera.enabled = false;
         
         // Remove loading screen
         transition.SetTrigger("End");

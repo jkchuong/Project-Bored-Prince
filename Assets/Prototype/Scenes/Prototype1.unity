@@ -378,6 +378,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1326375560, guid: a2f7f8b764fd2894886dc0eac075622d, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1326375560, guid: a2f7f8b764fd2894886dc0eac075622d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1326375560, guid: a2f7f8b764fd2894886dc0eac075622d, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1326375560, guid: a2f7f8b764fd2894886dc0eac075622d, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1326375560, guid: a2f7f8b764fd2894886dc0eac075622d, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1454
+      objectReference: {fileID: 0}
+    - target: {fileID: 1326375560, guid: a2f7f8b764fd2894886dc0eac075622d, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1454
+      objectReference: {fileID: 0}
+    - target: {fileID: 1988029570, guid: a2f7f8b764fd2894886dc0eac075622d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3354487407233444560, guid: a2f7f8b764fd2894886dc0eac075622d, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -429,6 +457,10 @@ PrefabInstance:
     - target: {fileID: 7998164413308302417, guid: a2f7f8b764fd2894886dc0eac075622d, type: 3}
       propertyPath: m_Name
       value: Scene Loader
+      objectReference: {fileID: 0}
+    - target: {fileID: 7998164413308302417, guid: a2f7f8b764fd2894886dc0eac075622d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2f7f8b764fd2894886dc0eac075622d, type: 3}
@@ -5507,11 +5539,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 666237622230088602, guid: 243dbdb9e5eaf904699e4dfc4d02bb0f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.356598
+      value: -9.359306
       objectReference: {fileID: 0}
     - target: {fileID: 666237622230088602, guid: 243dbdb9e5eaf904699e4dfc4d02bb0f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.2687075
+      value: 2.2686923
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 243dbdb9e5eaf904699e4dfc4d02bb0f, type: 3}
