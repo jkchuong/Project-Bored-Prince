@@ -1,19 +1,21 @@
-using System;
 using UnityEngine;
 
-public class UILoader : MonoBehaviour
+namespace Project.Scripts.Core
 {
-    [SerializeField] private bool shouldLoadUI;
-    
-    private void Start()
+    public class UILoader : MonoBehaviour
     {
-        if (shouldLoadUI)
+        [SerializeField] private bool shouldLoadUI;
+    
+        private void Start()
         {
-            SceneLoader.Instance.LoadUIScene();
-        }
-        else
-        {
-            SceneLoader.Instance.UnloadUIScene();
+            if (shouldLoadUI)
+            {
+                SceneLoader.LoadUIScene();
+            }
+            else
+            {
+                SceneLoader.UnloadUIScene();
+            }
         }
     }
 }

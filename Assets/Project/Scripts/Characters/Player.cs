@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Project.Scripts.Collectibles;
+using Project.Scripts.Core;
 using Project.Scripts.UI;
 using UnityEngine;
 

@@ -1,29 +1,32 @@
 using System;
 using UnityEngine;
 
-public class Health : MonoBehaviour
+namespace Project.Scripts.Core
 {
-    [SerializeField] private float maxHealth = 100;
-    [SerializeField] private float health;
-
-    public event Action<float> OnHealthChanged;
-    public event Action DoDeath;
-
-    private float HealthPercentage => health / maxHealth;
-
-    private void Start()
+    public class Health : MonoBehaviour
     {
-        health = maxHealth;
-    }
-    
-    public void ModifyHealth(float amount)
-    {
-        health = Mathf.Clamp(health + amount, 0, maxHealth);
-        OnHealthChanged?.Invoke(HealthPercentage);
+        [SerializeField] private float maxHealth = 100;
+        [SerializeField] private float health;
 
-        if (HealthPercentage <= 0)
+        public event Action<float> OnHealthChanged;
+        public event Action DoDeath;
+
+        private float HealthPercentage => health / maxHealth;
+
+        private void Start()
         {
-            DoDeath?.Invoke();
+            health = maxHealth;
+        }
+    
+        public void ModifyHealth(float amount)
+        {
+            health = Mathf.Clamp(health + amount, 0, maxHealth);
+            OnHealthChanged?.Invoke(HealthPercentage);
+
+            if (HealthPercentage <= 0)
+            {
+                DoDeath?.Invoke();
+            }
         }
     }
 }

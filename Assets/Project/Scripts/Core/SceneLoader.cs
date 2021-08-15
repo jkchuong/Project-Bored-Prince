@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Linq;
+using Project.Scripts.Core;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -52,7 +53,7 @@ public class SceneLoader : SingletonPersistent<SceneLoader>
         transition.SetTrigger("End");
     }
 
-    public void LoadUIScene()
+    public static void LoadUIScene()
     {
         if (!SceneManager.GetSceneByName(Scenes.UI.ToString()).isLoaded)
         {
@@ -60,7 +61,7 @@ public class SceneLoader : SingletonPersistent<SceneLoader>
         }
     }
 
-    public void UnloadUIScene()
+    public static void UnloadUIScene()
     {
         SceneManager.UnloadSceneAsync(Scenes.UI.ToString());
     }
