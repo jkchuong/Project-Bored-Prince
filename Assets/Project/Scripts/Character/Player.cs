@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Project.Scripts.Collectibles;
 using Project.Scripts.Core;
+using Project.Scripts.Enemy;
 using Project.Scripts.UI;
 using UnityEngine;
 
@@ -131,7 +132,7 @@ namespace Project.Scripts.Character
             OnInventoryChanged?.Invoke(null);
         }
     
-        public void AddBuff(Action<Enemy, float, float> buffAbility, Sprite buffSprite, BuffType buffType)
+        public void AddBuff(Action<EnemyObject, float, float> buffAbility, Sprite buffSprite, BuffType buffType)
         {
             specialAttackBox.SetBuff(buffAbility);
             this.buffType = buffType;

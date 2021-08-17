@@ -1,3 +1,4 @@
+using Project.Scripts.Enemy;
 using UnityEngine;
 
 namespace Project.Scripts.Character
@@ -8,11 +9,11 @@ namespace Project.Scripts.Character
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            Enemy enemy = other.GetComponent<Enemy>();
+            EnemyObject enemyObject = other.GetComponent<EnemyObject>();
 
-            if (enemy)
+            if (enemyObject)
             {
-                enemy.Health.ModifyHealth(-DamageAmount);
+                enemyObject.Health.ModifyHealth(-DamageAmount);
             }
         }
     }

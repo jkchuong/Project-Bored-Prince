@@ -1,4 +1,5 @@
 using System;
+using Project.Scripts.Enemy;
 using UnityEngine;
 
 namespace Project.Scripts.Character
@@ -11,19 +12,19 @@ namespace Project.Scripts.Character
         [Tooltip("Duration of the effect")]
         [SerializeField] private float effectDuration = 3f;
     
-        private event Action<Enemy, float, float> Buff;
+        private event Action<EnemyObject, float, float> Buff;
     
         private void OnTriggerEnter2D(Collider2D other)
         {
-            Enemy enemy = other.GetComponent<Enemy>();
+            EnemyObject enemyObject = other.GetComponent<EnemyObject>();
 
-            if (enemy)
+            if (enemyObject)
             {
-                Buff?.Invoke(enemy, effectFactor, effectDuration);
+                Buff?.Invoke(enemyObject, effectFactor, effectDuration);
             }
         }
 
-        public void SetBuff(Action<Enemy, float, float> buffToSet)
+        public void SetBuff(Action<EnemyObject, float, float> buffToSet)
         {
             Buff = buffToSet;
         }

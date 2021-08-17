@@ -1,5 +1,6 @@
 using System;
 using Project.Scripts.Character;
+using Project.Scripts.Enemy;
 using UnityEngine;
 
 namespace Project.Scripts.Collectibles
@@ -26,7 +27,7 @@ namespace Project.Scripts.Collectibles
             Destroy(gameObject);
         }
         
-        protected abstract void BuffAbility(Enemy enemy, float effectFactor, float effectDuration);
+        protected abstract void BuffAbility(EnemyObject enemyObject, float effectFactor, float effectDuration);
     }
     
     public enum BuffType
