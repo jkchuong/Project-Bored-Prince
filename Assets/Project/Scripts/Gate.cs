@@ -1,4 +1,5 @@
 using System;
+using Project.Scripts.Character;
 using UnityEngine;
 
 public class Gate : MonoBehaviour

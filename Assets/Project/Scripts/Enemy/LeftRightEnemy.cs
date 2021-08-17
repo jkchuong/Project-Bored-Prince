@@ -1,12 +1,9 @@
-using System;
 using UnityEngine;
 
 public class LeftRightEnemy : Enemy
 {
-    [Header("Stats")]
     [SerializeField] private float maxSpeed;
-    [SerializeField] private float damageAmount = 5;
-    
+
     [Header("Ground and Wall Detection")]
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private float groundRaycastLength = 0.5f;
@@ -25,18 +22,7 @@ public class LeftRightEnemy : Enemy
     private void Update()
     {
         targetVelocity = new Vector2(maxSpeed * direction, 0);
-
         CheckLedgesAndWalls();
-    }
-
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        Player player = other.gameObject.GetComponent<Player>();
-
-        if (player)
-        {
-            player.Health.ModifyHealth(-damageAmount);
-        }
     }
 
     private void CheckLedgesAndWalls()

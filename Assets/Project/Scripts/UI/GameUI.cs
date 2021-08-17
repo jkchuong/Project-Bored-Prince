@@ -1,5 +1,6 @@
 using System;
 using JetBrains.Annotations;
+using Project.Scripts.Character;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

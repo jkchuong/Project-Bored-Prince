@@ -1,4 +1,5 @@
 using System;
+using Project.Scripts.Character;
 using UnityEngine;
 
 namespace Project.Scripts.Collectibles
