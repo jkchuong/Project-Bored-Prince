@@ -22,6 +22,7 @@ namespace Project.Scripts.Collectibles
         Coin,
         Health,
         Buff,
-        QuestItem
+        QuestItem,
+        LevelItem
     }
 }

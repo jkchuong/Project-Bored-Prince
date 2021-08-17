@@ -1,4 +1,3 @@
-using System;
 using JetBrains.Annotations;
 using Project.Scripts.Character;
 using TMPro;
@@ -49,9 +48,10 @@ namespace Project.Scripts.UI
                 return;
             
             boundPlayer.Health.OnHealthChanged += HandleHealthChanged;
-            boundPlayer.OnCoinsChanged += HandleCoinChanged;
             boundPlayer.OnBuffChanged += HandleBuffChanged;
-            boundPlayer.OnInventoryChanged += HandleInventoryChanged;
+            boundPlayer.inventory.OnCoinsChanged += HandleCoinChanged;
+            boundPlayer.inventory.OnLevelItemCollect += HandleLevelInventoryChanged;
+            boundPlayer.inventory.OnQuestItemCollect += HandleQuestInventoryChanged;
         }
 
         private void DeregisterPlayerUI()
@@ -60,8 +60,10 @@ namespace Project.Scripts.UI
                 return;
             
             boundPlayer.Health.OnHealthChanged -= HandleHealthChanged;
-            boundPlayer.OnCoinsChanged -= HandleCoinChanged;
             boundPlayer.OnBuffChanged -= HandleBuffChanged;
+            boundPlayer.inventory.OnCoinsChanged -= HandleCoinChanged;
+            boundPlayer.inventory.OnLevelItemCollect -= HandleLevelInventoryChanged;
+            boundPlayer.inventory.OnQuestItemCollect -= HandleQuestInventoryChanged;
         }
 
         private void HandleHealthChanged(float healthPercentage)
@@ -79,9 +81,14 @@ namespace Project.Scripts.UI
             buffIcon.sprite = buffSprite;
         }
 
-        private void HandleInventoryChanged(Sprite itemSprite)
+        private void HandleLevelInventoryChanged(Sprite itemSprite)
         {
             inventoryItem.sprite = itemSprite ? itemSprite : blankInventoryItem;
+        }
+        
+        private void HandleQuestInventoryChanged(Sprite obj)
+        {
+            Debug.Log("Handle Quest Inventory not implemented");
         }
     }
 }

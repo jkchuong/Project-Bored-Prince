@@ -20,19 +20,16 @@ namespace Project.Scripts.Character
         [SerializeField] private float specialAttackRadius = 1f;
 
         [Header("Stats")]
-        [SerializeField] private int coinsCollected;
         [SerializeField] private BuffType buffType = BuffType.Blank;
         public Health Health { get; private set; }
-        private Dictionary<string, Sprite> inventory = new Dictionary<string, Sprite>();
+        public readonly Inventory inventory = new Inventory();
     
         private AttackBox attackBox;
         private SpecialAttackBox specialAttackBox;
         private bool regularAttacking;
         private bool specialAttacking;
 
-        public event Action<int> OnCoinsChanged;
         public event Action<Sprite> OnBuffChanged;
-        public event Action<Sprite> OnInventoryChanged;
 
         private void Awake()
         {
@@ -114,34 +111,11 @@ namespace Project.Scripts.Character
             regularAttacking = false;
         }
 
-        public void AddCoin()
-        {
-            coinsCollected++;
-            OnCoinsChanged?.Invoke(coinsCollected);
-        }
-    
-        public void AddQuestItem(string itemName, Sprite itemSprite)
-        {
-            inventory.Add(itemName, itemSprite);
-            OnInventoryChanged?.Invoke(itemSprite);
-        }
-    
-        public void RemoveQuestItem(string itemName)
-        {
-            inventory.Remove(itemName);
-            OnInventoryChanged?.Invoke(null);
-        }
-    
         public void AddBuff(Action<EnemyObject, float, float> buffAbility, Sprite buffSprite, BuffType buffType)
         {
             specialAttackBox.SetBuff(buffAbility);
             this.buffType = buffType;
             OnBuffChanged?.Invoke(buffSprite);
-        }
-
-        public bool InventoryContains(string itemName)
-        {
-            return inventory.ContainsKey(itemName);
         }
 
 #if UNITY_EDITOR

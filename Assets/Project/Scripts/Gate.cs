@@ -1,10 +1,11 @@
 using System;
 using Project.Scripts.Character;
+using Project.Scripts.Collectibles;
 using UnityEngine;
 
 public class Gate : MonoBehaviour
 {
-    [SerializeField] private string gateUnlockItem;
+    [SerializeField] private ItemScriptable gateUnlockItem;
     
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -12,9 +13,9 @@ public class Gate : MonoBehaviour
         {
             Player player = other.GetComponent<Player>();
             
-            if (player.InventoryContains(gateUnlockItem))
+            if (player.inventory.InventoryContains(gateUnlockItem))
             {
-                player.RemoveQuestItem(gateUnlockItem);
+                player.inventory.RemoveItem(gateUnlockItem);
                 Destroy(gameObject);
             }
         }

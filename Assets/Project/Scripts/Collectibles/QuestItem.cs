@@ -9,16 +9,16 @@ namespace Project.Scripts.Collectibles
     {
         public override ItemType ItemType => ItemType.QuestItem;
 
-        [SerializeField] private QuestItemScriptable questItemScriptable;
+        [SerializeField] private ItemScriptable itemScriptable;
 
         private void Start()
         {
-            GetComponent<SpriteRenderer>().sprite = questItemScriptable.itemSprite;
+            GetComponent<SpriteRenderer>().sprite = itemScriptable.itemSprite;
         }
 
         protected override void HandlePickUp(Player player)
         {
-            player.AddQuestItem(questItemScriptable.itemName, questItemScriptable.itemImageUI);
+            player.inventory.AddItem(itemScriptable);
             
             Destroy(gameObject);
         }
