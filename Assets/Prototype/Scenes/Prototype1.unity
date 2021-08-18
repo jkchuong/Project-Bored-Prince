@@ -5810,6 +5810,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8820519816766003679, guid: 5c1e15ac66fada84ba6d7787c2db9abf, type: 3}
+      propertyPath: gateUnlockItem
+      value: 
+      objectReference: {fileID: 11400000, guid: 5b357fe513b028149961d96533f3c238, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c1e15ac66fada84ba6d7787c2db9abf, type: 3}
 --- !u!1001 &5159369515859108088
@@ -5991,10 +5995,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Socks
       objectReference: {fileID: 0}
-    - target: {fileID: 7394676939390386932, guid: def7ec2128bc40c439db75330035a0f4, type: 3}
-      propertyPath: questItemScriptable
-      value: 
-      objectReference: {fileID: 11400000, guid: 5b357fe513b028149961d96533f3c238, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: def7ec2128bc40c439db75330035a0f4, type: 3}
 --- !u!1001 &7578113446522752195

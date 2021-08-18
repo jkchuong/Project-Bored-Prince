@@ -82,6 +82,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b71539cb404c3b43ba43a1616c17f47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectFactor: 1
+  effectDuration: 3
 --- !u!1 &4243437948389290197
 GameObject:
   m_ObjectHideFlags: 0
@@ -317,7 +319,8 @@ MonoBehaviour:
   jumpSpeed: 17
   attackDamage: 4
   specialAttackRadius: 3
-  coinsCollected: 0
+  specialAttackSpeed: 2
+  attackSpeed: 0.2
   buffType: 0
 --- !u!114 &157742699277198869
 MonoBehaviour:

@@ -20,6 +20,8 @@ namespace Project.Scripts.Character
         [SerializeField] private float specialAttackRadius = 1f;
 
         [Header("Stats")]
+        [SerializeField] private float specialAttackSpeed = 0.2f;
+        [SerializeField] private float attackSpeed = 0.2f;
         [SerializeField] private BuffType buffType = BuffType.Blank;
         public Health Health { get; private set; }
         public readonly Inventory inventory = new Inventory();
@@ -41,7 +43,7 @@ namespace Project.Scripts.Character
             // Get and deactivate attack box
             specialAttackBox = GetComponentInChildren<SpecialAttackBox>();
             specialAttackBox.SetAttackSize(specialAttackRadius);
-            specialAttackBox.gameObject.SetActive(false);
+            specialAttackBox.SetAttack(false);
 
             Health = GetComponent<Health>();
         }
@@ -94,10 +96,10 @@ namespace Project.Scripts.Character
         private IEnumerator SpecialAttack()
         {
             // TODO: Match this to animator but using Animation Event to trigger - set true during swing and false end of swing
-            specialAttackBox.gameObject.SetActive(true);
+            specialAttackBox.SetAttack(true);
             specialAttacking = true;
-            yield return new WaitForSeconds(0.2f);
-            specialAttackBox.gameObject.SetActive(false);
+            yield return new WaitForSeconds(specialAttackSpeed);
+            specialAttackBox.SetAttack(false);
             specialAttacking = false;
         }
 
@@ -106,7 +108,7 @@ namespace Project.Scripts.Character
             // TODO: Match this to animator but using Animation Event to trigger - set true during swing and false end of swing
             attackBox.gameObject.SetActive(true);
             regularAttacking = true;
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(attackSpeed);
             attackBox.gameObject.SetActive(false);
             regularAttacking = false;
         }
