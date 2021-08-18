@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Project.Scripts.Enemy;
 using UnityEngine;
@@ -8,15 +9,24 @@ namespace Project.Scripts.Collectibles
     {
         public override BuffType BuffType => BuffType.Fire;
 
-        protected override void BuffAbility(EnemyObject enemyObject, float effectFactor, float effectDuration)
+        public override void BuffAbility(EnemyObject enemyObject, float effectFactor, float effectDuration)
         {
-            Debug.Log("Fire Ability Activated on " + enemyObject.name);
-            // StartCoroutine(FireAttack(enemy));
+            StartCoroutine(FireAttack(enemyObject, effectFactor * 8, effectDuration));
         }
 
-        private void FireAttack(EnemyObject enemyObject)
+        private IEnumerator FireAttack(EnemyObject enemyObject, float totalDamage, float duration)
         {
-            // TODO: Have total damage over time in inspector?
+            const float applyEveryNSecond = 0.3f;
+            int totalAppliedTimes = (int)Math.Ceiling(duration / applyEveryNSecond);
+            int appliedTimes = 0;
+            float damage = totalDamage * (applyEveryNSecond / duration);
+
+            while (appliedTimes < totalAppliedTimes)
+            {
+                enemyObject.Health.ModifyHealth(-damage);
+                yield return new WaitForSeconds(applyEveryNSecond);
+                appliedTimes++;
+            }
         }
     }
 }

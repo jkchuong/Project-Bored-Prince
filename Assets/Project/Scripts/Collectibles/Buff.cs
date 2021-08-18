@@ -22,12 +22,18 @@ namespace Project.Scripts.Collectibles
 
         protected override void HandlePickUp(Player player)
         {
-            player.AddBuff(BuffAbility, buffImageUI, BuffType);
+            player.AddBuff(this, buffImageUI);
             
-            Destroy(gameObject);
+            DeactivateItem();
+        }
+
+        private void DeactivateItem()
+        {
+            GetComponent<SpriteRenderer>().enabled = false;
+            GetComponent<Collider2D>().enabled = false;
         }
         
-        protected abstract void BuffAbility(EnemyObject enemyObject, float effectFactor, float effectDuration);
+        public abstract void BuffAbility(EnemyObject enemyObject, float effectFactor, float effectDuration);
     }
     
     public enum BuffType

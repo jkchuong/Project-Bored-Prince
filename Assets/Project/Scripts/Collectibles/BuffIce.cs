@@ -7,7 +7,7 @@ namespace Project.Scripts.Collectibles
     {
         public override BuffType BuffType => BuffType.Ice;
 
-        protected override void BuffAbility(EnemyObject enemyObject, float effectFactor, float effectDuration)
+        public override void BuffAbility(EnemyObject enemyObject, float effectFactor, float effectDuration)
         {
             Debug.Log("Ice Ability Activated on " + enemyObject.name);
         }

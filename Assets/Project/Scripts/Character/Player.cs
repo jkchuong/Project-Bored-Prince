@@ -22,7 +22,6 @@ namespace Project.Scripts.Character
         [Header("Stats")]
         [SerializeField] private float specialAttackSpeed = 0.2f;
         [SerializeField] private float attackSpeed = 0.2f;
-        [SerializeField] private BuffType buffType = BuffType.Blank;
         public Health Health { get; private set; }
         public readonly Inventory inventory = new Inventory();
     
@@ -113,10 +112,9 @@ namespace Project.Scripts.Character
             regularAttacking = false;
         }
 
-        public void AddBuff(Action<EnemyObject, float, float> buffAbility, Sprite buffSprite, BuffType buffType)
+        public void AddBuff(Buff buff, Sprite buffSprite)
         {
-            specialAttackBox.SetBuff(buffAbility);
-            this.buffType = buffType;
+            specialAttackBox.SetBuff(buff);
             OnBuffChanged?.Invoke(buffSprite);
         }
 
