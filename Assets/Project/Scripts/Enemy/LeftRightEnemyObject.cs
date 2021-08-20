@@ -4,8 +4,6 @@ namespace Project.Scripts.Enemy
 {
     public class LeftRightEnemyObject : EnemyObject
     {
-        [SerializeField] private float maxSpeed;
-
         [Header("Ground and Wall Detection")]
         [SerializeField] private LayerMask groundMask;
         [SerializeField] private float groundRaycastLength = 0.5f;
