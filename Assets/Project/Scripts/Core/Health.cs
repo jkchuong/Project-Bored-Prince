@@ -5,7 +5,7 @@ namespace Project.Scripts.Core
 {
     public class Health : MonoBehaviour
     {
-        public float maxHealth = 100;
+        [SerializeField] private float maxHealth = 100;
         [SerializeField] private float health;
 
         public event Action<float> OnHealthChanged;
@@ -27,6 +27,11 @@ namespace Project.Scripts.Core
             {
                 DoDeath?.Invoke();
             }
+        }
+
+        public void ResetHealth()
+        {
+            ModifyHealth(maxHealth);
         }
     }
 }

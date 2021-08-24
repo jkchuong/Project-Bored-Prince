@@ -108,7 +108,7 @@ namespace Project.Scripts.Character
             
             // Move player to last checkpoint
             transform.position = Checkpoint;
-            Health.ModifyHealth(Health.maxHealth);
+            Health.ResetHealth();
             
             // Remove loading screen
             SceneLoader.Instance.EndLoadingScreen();
