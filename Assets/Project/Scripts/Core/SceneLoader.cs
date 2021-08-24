@@ -1,9 +1,7 @@
-using System;
 using System.Collections;
 using Project.Scripts.Core;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using DG.Tweening;
 
 public class SceneLoader : SingletonPersistent<SceneLoader>
 {
@@ -13,21 +11,7 @@ public class SceneLoader : SingletonPersistent<SceneLoader>
     [SerializeField] private Animator transition;
     [SerializeField] private float transitionTime = 1f;
 
-    private float circleWipeWidth;
-    private float halfCameraWidth;
-
-    private void Start()
-    {
-        circleWipeWidth = circleWipe.sizeDelta.x;
-        halfCameraWidth = loadingCamera.aspect * loadingCamera.orthographicSize;
-    }
-
-    public void ReloadScene()
-    {
-        StartCoroutine(LoadSceneAsync(SceneManager.GetActiveScene().name));
-    }
-
-    public void LoadScene(string sceneName)
+    public void LoadLevelWithAnimation(string sceneName)
     {
         StartCoroutine(LoadSceneAsync(sceneName));
     }
@@ -36,9 +20,8 @@ public class SceneLoader : SingletonPersistent<SceneLoader>
     {
         // TODO: Replace with DOTween
         // Move loading screen canvas
-        transition.SetTrigger("Start");
-        // circleWipe.DOMoveX(0f, 3f, false);
-        
+        StartLoadingScreen();       
+
         // Wait for loading screen
         yield return new WaitForSeconds(transitionTime);
         
@@ -60,7 +43,7 @@ public class SceneLoader : SingletonPersistent<SceneLoader>
         loadingCamera.enabled = false;
         
         // Remove loading screen
-        transition.SetTrigger("End");
+        EndLoadingScreen();
     }
 
     public static void LoadUIScene()
@@ -74,6 +57,16 @@ public class SceneLoader : SingletonPersistent<SceneLoader>
     public static void UnloadUIScene()
     {
         SceneManager.UnloadSceneAsync(Scenes.UI.ToString());
+    }
+
+    public void StartLoadingScreen()
+    {
+        transition.SetTrigger("Start");
+    }
+    
+    public void EndLoadingScreen()
+    {
+        transition.SetTrigger("End");
     }
 }
 

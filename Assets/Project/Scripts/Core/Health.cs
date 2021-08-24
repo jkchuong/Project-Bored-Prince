@@ -5,7 +5,7 @@ namespace Project.Scripts.Core
 {
     public class Health : MonoBehaviour
     {
-        [SerializeField] private float maxHealth = 100;
+        public float maxHealth = 100;
         [SerializeField] private float health;
 
         public event Action<float> OnHealthChanged;

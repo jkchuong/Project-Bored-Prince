@@ -25,6 +25,8 @@ namespace Project.Scripts.Character
         public Health Health { get; private set; }
         public readonly Inventory inventory = new Inventory();
     
+        public Vector2 Checkpoint { private get; set; }
+        
         private AttackBox attackBox;
         private SpecialAttackBox specialAttackBox;
         private bool regularAttacking;
@@ -44,6 +46,8 @@ namespace Project.Scripts.Character
             specialAttackBox.SetAttackSize(specialAttackRadius);
             specialAttackBox.SetAttack(false);
 
+            Checkpoint = transform.position;
+            
             Health = GetComponent<Health>();
         }
 
@@ -56,12 +60,7 @@ namespace Project.Scripts.Character
         
             Health.DoDeath += HealthOnDoDeath;
         }
-
-        private void HealthOnDoDeath()
-        {
-            SceneLoader.Instance.ReloadScene();
-        }
-
+        
         private void Update()
         {
             targetVelocity = new Vector2(Input.GetAxis("Horizontal") * maxSpeed, 0);
@@ -90,6 +89,29 @@ namespace Project.Scripts.Character
             {
                 StartCoroutine(SpecialAttack());
             }
+        }
+
+        private void HealthOnDoDeath()
+        {
+            // TODO: Player death animation
+            
+            StartCoroutine(ResetPlayer());
+        }
+
+        private IEnumerator ResetPlayer()
+        {
+            // Move loading screen canvas
+            SceneLoader.Instance.StartLoadingScreen();
+            
+            // Wait for loading screen
+            yield return new WaitForSeconds(1f);
+            
+            // Move player to last checkpoint
+            transform.position = Checkpoint;
+            Health.ModifyHealth(Health.maxHealth);
+            
+            // Remove loading screen
+            SceneLoader.Instance.EndLoadingScreen();
         }
 
         private IEnumerator SpecialAttack()

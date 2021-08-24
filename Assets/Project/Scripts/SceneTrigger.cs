@@ -8,7 +8,7 @@ public class SceneTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            SceneLoader.Instance.LoadScene(sceneName.ToString());
+            SceneLoader.Instance.LoadLevelWithAnimation(sceneName.ToString());
         }
     }
 }
