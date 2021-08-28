@@ -26,6 +26,7 @@ namespace Project.Scripts.Character
         public readonly Inventory inventory = new Inventory();
     
         public Vector2 Checkpoint { private get; set; }
+        [SerializeField] private Sprite blankBuffSprite;
         
         private AttackBox attackBox;
         private SpecialAttackBox specialAttackBox;
@@ -38,13 +39,9 @@ namespace Project.Scripts.Character
         {
             // Get and deactivate attack box
             attackBox = GetComponentInChildren<AttackBox>();
-            attackBox.DamageAmount = attackDamage;
-            attackBox.gameObject.SetActive(false);
-        
+
             // Get and deactivate attack box
             specialAttackBox = GetComponentInChildren<SpecialAttackBox>();
-            specialAttackBox.SetAttackSize(specialAttackRadius);
-            specialAttackBox.SetAttack(false);
 
             Checkpoint = transform.position;
             
@@ -55,9 +52,17 @@ namespace Project.Scripts.Character
         {
             base.Start();
 
-            // Bind player to UI
+            // Bind player to UI and reset UI 
             FindObjectOfType<GameUI>()?.BindPlayer(this);
-        
+            Health.ResetHealth();
+            AddBuff(null, blankBuffSprite);
+
+            attackBox.DamageAmount = attackDamage;
+            attackBox.gameObject.SetActive(false);
+            
+            specialAttackBox.SetAttackSize(specialAttackRadius);
+            specialAttackBox.SetAttack(false);
+            
             Health.DoDeath += HealthOnDoDeath;
         }
         
@@ -106,10 +111,11 @@ namespace Project.Scripts.Character
             // Wait for loading screen
             yield return new WaitForSeconds(1f);
             
-            // Move player to last checkpoint
+            // Move player to last checkpoint and reset stats
             transform.position = Checkpoint;
             Health.ResetHealth();
-            
+            AddBuff(null, blankBuffSprite);
+
             // Remove loading screen
             SceneLoader.Instance.EndLoadingScreen();
         }

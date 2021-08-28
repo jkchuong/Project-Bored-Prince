@@ -321,7 +321,7 @@ MonoBehaviour:
   specialAttackRadius: 3
   specialAttackSpeed: 2
   attackSpeed: 0.2
-  buffType: 0
+  blankBuffSprite: {fileID: -2890374716496177641, guid: fef0eca6c26525d4eb3808d38c4d2eed, type: 3}
 --- !u!114 &157742699277198869
 MonoBehaviour:
   m_ObjectHideFlags: 0

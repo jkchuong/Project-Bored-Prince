@@ -27,7 +27,7 @@ namespace Project.Scripts.Character
         {
             EnemyObject enemyObject = other.GetComponent<EnemyObject>();
 
-            if (enemyObject)
+            if (enemyObject && buff)
             {
                 buff.BuffAbility(enemyObject, effectFactor, effectDuration);
             }

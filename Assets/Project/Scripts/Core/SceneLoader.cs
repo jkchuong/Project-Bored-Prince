@@ -11,11 +11,6 @@ public class SceneLoader : SingletonPersistent<SceneLoader>
     [SerializeField] private Animator transition;
     [SerializeField] private float transitionTime = 1f;
 
-    public void LoadLevelWithAnimation(string sceneName)
-    {
-        StartCoroutine(LoadSceneAsync(sceneName));
-    }
-
     private IEnumerator LoadSceneAsync(string sceneName)
     {
         // TODO: Replace with DOTween
@@ -46,6 +41,24 @@ public class SceneLoader : SingletonPersistent<SceneLoader>
         EndLoadingScreen();
     }
 
+    private IEnumerator LoadSceneInstant(string sceneName)
+    {
+        StartLoadingScreen();
+        yield return new WaitForSeconds(transitionTime);
+        SceneManager.LoadScene(sceneName);
+        EndLoadingScreen();
+    }
+
+    public void LoadLevelInstant(string sceneName)
+    {
+        StartCoroutine(LoadSceneInstant(sceneName));
+    }
+
+    public void LoadLevelWithAnimation(string sceneName)
+    {
+        StartCoroutine(LoadSceneAsync(sceneName));
+    }
+    
     public static void LoadUIScene()
     {
         if (!SceneManager.GetSceneByName(Scenes.UI.ToString()).isLoaded)
