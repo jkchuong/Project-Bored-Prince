@@ -12,10 +12,10 @@ namespace Project.Scripts.Core
             {
                 SceneLoader.LoadUIScene();
             }
-            else
-            {
-                SceneLoader.UnloadUIScene();
-            }
+            // else
+            // {
+            //     SceneLoader.UnloadUIScene();
+            // }
         }
     }
 }

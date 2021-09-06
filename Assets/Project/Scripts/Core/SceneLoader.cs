@@ -87,5 +87,6 @@ public enum Scenes
 {
     Prototype1,
     Prototype2,
+    Prototype3,
     UI
 }

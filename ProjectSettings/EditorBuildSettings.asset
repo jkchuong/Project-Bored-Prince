@@ -9,11 +9,17 @@ EditorBuildSettings:
     path: Assets/Prototype/Scenes/Prototype Menu.unity
     guid: 66c30c62e35e09f46a15777d71dd840c
   - enabled: 1
+    path: Assets/Prototype/Scenes/Prototype Map.unity
+    guid: 52644e65d0636974dbb2be84f1d7fd00
+  - enabled: 1
     path: Assets/Prototype/Scenes/Prototype1.unity
     guid: cea8d586a552c534da8a9b8dd2a9e416
   - enabled: 1
     path: Assets/Prototype/Scenes/Prototype2.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Prototype/Scenes/Prototype3.unity
+    guid: 9ec4a14eb3e29ad4bb2bacf4628661a3
   - enabled: 1
     path: Assets/Prototype/Scenes/UI.unity
     guid: ff922012ea710e347ab30defc9c13296
