@@ -13,5 +13,6 @@ namespace Project.Scripts.Core
     public class GameManager : SingletonPersistent<GameManager>
     {
         public Scenes currentScene = Scenes.Prototype1;
+        public int levelsUnlocked = 1;
     }
 }

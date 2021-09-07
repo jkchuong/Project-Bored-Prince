@@ -1963,10 +1963,6 @@ PrefabInstance:
       value: Scene Load Trigger
       objectReference: {fileID: 0}
     - target: {fileID: 569373205243247813, guid: 40b2acf09e359654c84efa12f6ead18d, type: 3}
-      propertyPath: sceneName
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 569373205243247813, guid: 40b2acf09e359654c84efa12f6ead18d, type: 3}
       propertyPath: sceneTrigger.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 0}

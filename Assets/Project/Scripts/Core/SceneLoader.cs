@@ -41,14 +41,25 @@ public class SceneLoader : SingletonPersistent<SceneLoader>
         EndLoadingScreen();
     }
 
-    private IEnumerator LoadSceneInstant(string sceneName)
+    private IEnumerator LoadSceneInstant(string sceneName, bool unloadUI = true)
     {
         StartLoadingScreen();
         yield return new WaitForSeconds(transitionTime);
+
+        if (unloadUI)
+        {
+            UnloadUIScene();
+        }
+        
         SceneManager.LoadScene(sceneName);
         EndLoadingScreen();
     }
 
+    public void LoadLevelInstant(string sceneName, bool unloadUI = false)
+    {
+        StartCoroutine(LoadSceneInstant(sceneName, unloadUI));
+    }
+    
     public void LoadLevelInstant(string sceneName)
     {
         StartCoroutine(LoadSceneInstant(sceneName));
@@ -69,7 +80,10 @@ public class SceneLoader : SingletonPersistent<SceneLoader>
 
     public static void UnloadUIScene()
     {
-        SceneManager.UnloadSceneAsync(Scenes.UI.ToString());
+        if (SceneManager.GetSceneByName(Scenes.UI.ToString()).isLoaded)
+        {
+            SceneManager.UnloadSceneAsync(Scenes.UI.ToString());
+        }
     }
 
     public void StartLoadingScreen()
@@ -85,6 +99,8 @@ public class SceneLoader : SingletonPersistent<SceneLoader>
 
 public enum Scenes
 {
+    Prototype_Menu,
+    Prototype_Map,
     Prototype1,
     Prototype2,
     Prototype3,

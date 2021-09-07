@@ -38,7 +38,7 @@ namespace Project.Scripts.UI
             // Press D move right of array
             if (Input.GetKeyDown(KeyCode.D))
             {
-                if (arrayPosition + 1 < levels.Count)
+                if (arrayPosition + 1 < levels.Count && arrayPosition + 1 <= GameManager.Instance.levelsUnlocked - 1)
                 {
                     arrayPosition += 1;
                 }
@@ -55,6 +55,7 @@ namespace Project.Scripts.UI
 
         private void MoveCharacterToLevelPosition(int position)
         {
+            // TODO: Animate character movement
             character.transform.position = levelPositions[position].position;
         }
     }

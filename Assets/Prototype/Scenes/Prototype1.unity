@@ -428,7 +428,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7998164413308302417, guid: a2f7f8b764fd2894886dc0eac075622d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2f7f8b764fd2894886dc0eac075622d, type: 3}
@@ -1193,6 +1193,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccb803afbe58cef4a879a2f180f04f1d, type: 3}
+--- !u!1001 &504665239
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4267944668634370204, guid: 346bc01a5cdf6fb419cff9de805d75ba, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4267944668634370204, guid: 346bc01a5cdf6fb419cff9de805d75ba, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4267944668634370204, guid: 346bc01a5cdf6fb419cff9de805d75ba, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4267944668634370204, guid: 346bc01a5cdf6fb419cff9de805d75ba, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4267944668634370204, guid: 346bc01a5cdf6fb419cff9de805d75ba, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4267944668634370204, guid: 346bc01a5cdf6fb419cff9de805d75ba, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4267944668634370204, guid: 346bc01a5cdf6fb419cff9de805d75ba, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4267944668634370204, guid: 346bc01a5cdf6fb419cff9de805d75ba, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4267944668634370204, guid: 346bc01a5cdf6fb419cff9de805d75ba, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4267944668634370204, guid: 346bc01a5cdf6fb419cff9de805d75ba, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4267944668634370204, guid: 346bc01a5cdf6fb419cff9de805d75ba, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4267944668634370205, guid: 346bc01a5cdf6fb419cff9de805d75ba, type: 3}
+      propertyPath: m_Name
+      value: GameManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 346bc01a5cdf6fb419cff9de805d75ba, type: 3}
 --- !u!4 &511350212 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 641772152604466217, guid: 733b28489d6664b4090a4c74ab94a428, type: 3}
@@ -5391,12 +5448,20 @@ PrefabInstance:
       value: Scene Load Trigger
       objectReference: {fileID: 0}
     - target: {fileID: 569373205243247813, guid: 40b2acf09e359654c84efa12f6ead18d, type: 3}
-      propertyPath: sceneName
+      propertyPath: unityEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 569373205243247813, guid: 40b2acf09e359654c84efa12f6ead18d, type: 3}
+      propertyPath: unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 569373205243247813, guid: 40b2acf09e359654c84efa12f6ead18d, type: 3}
       propertyPath: sceneTrigger.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 569373205243247813, guid: 40b2acf09e359654c84efa12f6ead18d, type: 3}
+      propertyPath: unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40b2acf09e359654c84efa12f6ead18d, type: 3}

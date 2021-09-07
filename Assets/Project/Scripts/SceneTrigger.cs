@@ -1,4 +1,6 @@
+using Project.Scripts.Core;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SceneTrigger : MonoBehaviour
 {
@@ -8,7 +10,8 @@ public class SceneTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            SceneLoader.Instance.LoadLevelWithAnimation(sceneName.ToString());
+            GameManager.Instance.levelsUnlocked++;
+            SceneLoader.Instance.LoadLevelInstant(sceneName.ToString(), true);
         }
     }
 }

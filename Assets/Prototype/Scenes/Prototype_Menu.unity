@@ -583,7 +583,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Prototype1
+          m_StringArgument: Prototype_Map
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &491103967
@@ -736,6 +736,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de42ac6e748683246aef0447e0b680b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &679602465
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4267944668634370204, guid: 346bc01a5cdf6fb419cff9de805d75ba, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4267944668634370204, guid: 346bc01a5cdf6fb419cff9de805d75ba, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4267944668634370204, guid: 346bc01a5cdf6fb419cff9de805d75ba, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4267944668634370204, guid: 346bc01a5cdf6fb419cff9de805d75ba, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4267944668634370204, guid: 346bc01a5cdf6fb419cff9de805d75ba, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4267944668634370204, guid: 346bc01a5cdf6fb419cff9de805d75ba, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4267944668634370204, guid: 346bc01a5cdf6fb419cff9de805d75ba, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4267944668634370204, guid: 346bc01a5cdf6fb419cff9de805d75ba, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4267944668634370204, guid: 346bc01a5cdf6fb419cff9de805d75ba, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4267944668634370204, guid: 346bc01a5cdf6fb419cff9de805d75ba, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4267944668634370204, guid: 346bc01a5cdf6fb419cff9de805d75ba, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4267944668634370205, guid: 346bc01a5cdf6fb419cff9de805d75ba, type: 3}
+      propertyPath: m_Name
+      value: GameManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 346bc01a5cdf6fb419cff9de805d75ba, type: 3}
 --- !u!1 &816550335
 GameObject:
   m_ObjectHideFlags: 0
@@ -1153,7 +1210,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 250, y: -53.965145}
+  m_AnchoredPosition: {x: 250, y: -53.965088}
   m_SizeDelta: {x: 600, y: 152.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1451955762
