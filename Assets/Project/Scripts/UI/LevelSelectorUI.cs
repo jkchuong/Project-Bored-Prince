@@ -15,11 +15,13 @@ namespace Project.Scripts.UI
         [SerializeField] private Image character;
 
         private int arrayPosition;
+        private CharBezierFollow charBezierFollow;
         
         private void Start()
         {
+            charBezierFollow = FindObjectOfType<CharBezierFollow>();
             arrayPosition = levels.IndexOf(GameManager.Instance.currentScene);
-            MoveCharacterToLevelPosition(arrayPosition);
+            charBezierFollow.SetPosition(arrayPosition);
         }
 
         private void Update()
@@ -27,23 +29,24 @@ namespace Project.Scripts.UI
             // Press A move left of array
             if (Input.GetKeyDown(KeyCode.A))
             {
-                if (arrayPosition - 1 >= 0)
+                if (arrayPosition - 1 >= 0 && charBezierFollow.coroutineAllowed)
                 {
                     arrayPosition -= 1;
+                    charBezierFollow.MoveOnRouteReverse(arrayPosition);
                 }
-                
-                MoveCharacterToLevelPosition(arrayPosition);
             }
             
             // Press D move right of array
             if (Input.GetKeyDown(KeyCode.D))
             {
-                if (arrayPosition + 1 < levels.Count && arrayPosition + 1 <= GameManager.Instance.levelsUnlocked - 1)
+                if (arrayPosition + 1 < levels.Count
+                    && arrayPosition + 1 <= GameManager.Instance.levelsUnlocked - 1
+                    && charBezierFollow.coroutineAllowed)
                 {
+                    charBezierFollow.MoveOnRoute(arrayPosition);
                     arrayPosition += 1;
+
                 }
-                
-                MoveCharacterToLevelPosition(arrayPosition);
             }
 
             if (Input.GetKeyDown(KeyCode.K))
