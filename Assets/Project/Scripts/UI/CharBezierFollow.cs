@@ -8,6 +8,7 @@ namespace Project.Scripts.UI
     {
         [SerializeField] private float speedModifier;
         [SerializeField] private Transform[] routes;
+        [SerializeField] private Transform[] points;
 
         private float tParam;
 
@@ -15,7 +16,6 @@ namespace Project.Scripts.UI
 
         public bool coroutineAllowed;
 
-        [SerializeField] private Transform[] points;
 
         private void Start()
         {
@@ -23,7 +23,7 @@ namespace Project.Scripts.UI
             speedModifier = 0.5f;
             coroutineAllowed = true;
         }
-
+ 
         private IEnumerator GoByTheRoute(int routeNumber)
         {
             coroutineAllowed = false;

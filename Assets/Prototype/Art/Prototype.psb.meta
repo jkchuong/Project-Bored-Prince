@@ -121,7 +121,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 3852
-      y: 137
+      y: 218
       width: 66
       height: 174
     spriteID: 22d37e37a5bf16043839669da7e723ec
@@ -134,7 +134,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 2056, y: -555}
+    uvTransform: {x: 2056, y: -474}
   - name: Coin
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -143,7 +143,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 3852
-      y: 319
+      y: 400
       width: 88
       height: 88
     spriteID: fefb3e9cdb2a1b54187b64e968bbd7ae
@@ -156,7 +156,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 1951, y: -386}
+    uvTransform: {x: 1951, y: -305}
   - name: Background (Reference)
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -187,7 +187,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 3852
-      y: 609
+      y: 581
       width: 66
       height: 77
     spriteID: a8eb8d1dede203b42be36f9f6d5fc2b6
@@ -200,7 +200,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 2164, y: -301}
+    uvTransform: {x: 2164, y: -329}
   - name: Socks Shiny
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -209,7 +209,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 3852
-      y: 524
+      y: 496
       width: 67
       height: 77
     spriteID: 14c3c7a8ceeb28b4e9b6a5eb85fca17c
@@ -222,7 +222,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 2247, y: -386}
+    uvTransform: {x: 2247, y: -414}
   - name: Enemy1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -230,8 +230,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 3852
-      y: 415
+      x: 3926
+      y: 218
       width: 70
       height: 102
     spriteID: fe338c6f344cc3b4d8b6d9d71be3b564
@@ -244,7 +244,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 1828, y: -277}
+    uvTransform: {x: 1902, y: -474}
   - name: NPC
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -254,9 +254,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 3852
       y: 4
-      width: 117
-      height: 125
-    spriteID: edda11c0cbfb2e74f981c994d19ef509
+      width: 146
+      height: 206
+    spriteID: 1e77ab439ee00ec4b809adc24afe9523
     internalID: 0
     spriteBone: []
     spriteOutline: []
@@ -266,7 +266,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 2212, y: -712}
+    uvTransform: {x: 2349, y: -686}
   platformSettings: []
   mosaicLayers: 1
   documentPivot: {x: 0, y: 0}
@@ -290,8 +290,8 @@ ScriptedImporter:
     spriteName: NPC
     isGroup: 0
     parentIndex: -1
-    spriteID: edda11c0cbfb2e74f981c994d19ef509
-    layerID: 12
+    spriteID: 1e77ab439ee00ec4b809adc24afe9523
+    layerID: 17
     mosaicPosition: {x: 3852, y: 4}
   - name: Enemy1
     spriteName: Enemy1
@@ -299,28 +299,28 @@ ScriptedImporter:
     parentIndex: -1
     spriteID: fe338c6f344cc3b4d8b6d9d71be3b564
     layerID: 10
-    mosaicPosition: {x: 3852, y: 415}
+    mosaicPosition: {x: 3926, y: 218}
   - name: Coin
     spriteName: Coin
     isGroup: 0
     parentIndex: -1
     spriteID: fefb3e9cdb2a1b54187b64e968bbd7ae
     layerID: 6
-    mosaicPosition: {x: 3852, y: 319}
+    mosaicPosition: {x: 3852, y: 400}
   - name: Player
     spriteName: Player
     isGroup: 0
     parentIndex: -1
     spriteID: 22d37e37a5bf16043839669da7e723ec
     layerID: 4
-    mosaicPosition: {x: 3852, y: 137}
+    mosaicPosition: {x: 3852, y: 218}
   - name: Socks
     spriteName: Socks
     isGroup: 0
     parentIndex: -1
     spriteID: a8eb8d1dede203b42be36f9f6d5fc2b6
     layerID: 7
-    mosaicPosition: {x: 3852, y: 609}
+    mosaicPosition: {x: 3852, y: 581}
   - name: Ground
     spriteName: Ground
     isGroup: 0
@@ -334,7 +334,7 @@ ScriptedImporter:
     parentIndex: -1
     spriteID: 14c3c7a8ceeb28b4e9b6a5eb85fca17c
     layerID: 8
-    mosaicPosition: {x: 3852, y: 524}
+    mosaicPosition: {x: 3852, y: 496}
   - name: Background (Reference)
     spriteName: Background (Reference)
     isGroup: 0

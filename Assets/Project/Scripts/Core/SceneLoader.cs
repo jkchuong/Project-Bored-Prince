@@ -11,8 +11,12 @@ public class SceneLoader : SingletonPersistent<SceneLoader>
     [SerializeField] private Animator transition;
     [SerializeField] private float transitionTime = 1f;
 
+    private bool coroutineAllowed = true;
+
     private IEnumerator LoadSceneAsync(string sceneName)
     {
+        coroutineAllowed = false;
+        
         // TODO: Replace with DOTween
         // Move loading screen canvas
         StartLoadingScreen();       
@@ -39,10 +43,14 @@ public class SceneLoader : SingletonPersistent<SceneLoader>
         
         // Remove loading screen
         EndLoadingScreen();
+        
+        coroutineAllowed = true;
     }
 
     private IEnumerator LoadSceneInstant(string sceneName, bool unloadUI = true)
     {
+        coroutineAllowed = false;
+
         StartLoadingScreen();
         yield return new WaitForSeconds(transitionTime);
 
@@ -53,21 +61,26 @@ public class SceneLoader : SingletonPersistent<SceneLoader>
         
         SceneManager.LoadScene(sceneName);
         EndLoadingScreen();
+        
+        coroutineAllowed = true;
     }
 
     public void LoadLevelInstant(string sceneName, bool unloadUI = false)
     {
-        StartCoroutine(LoadSceneInstant(sceneName, unloadUI));
+        if (coroutineAllowed)
+            StartCoroutine(LoadSceneInstant(sceneName, unloadUI));
     }
     
     public void LoadLevelInstant(string sceneName)
     {
-        StartCoroutine(LoadSceneInstant(sceneName));
+        if (coroutineAllowed)
+            StartCoroutine(LoadSceneInstant(sceneName));
     }
 
     public void LoadLevelWithAnimation(string sceneName)
     {
-        StartCoroutine(LoadSceneAsync(sceneName));
+        if (coroutineAllowed)
+            StartCoroutine(LoadSceneAsync(sceneName));
     }
     
     public static void LoadUIScene()
