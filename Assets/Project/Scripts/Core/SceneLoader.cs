@@ -112,10 +112,10 @@ public class SceneLoader : SingletonPersistent<SceneLoader>
 
 public enum Scenes
 {
-    Prototype_Menu,
-    Prototype_Map,
-    Prototype1,
-    Prototype2,
-    Prototype3,
+    Menu,
+    Map,
+    Level1,
+    Level2,
+    Level3,
     UI
 }
