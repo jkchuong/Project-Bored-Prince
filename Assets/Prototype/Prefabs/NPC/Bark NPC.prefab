@@ -94,7 +94,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3288615987716705265}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -131,7 +131,7 @@ MonoBehaviour:
   spritePortrait: {fileID: 0}
   barkUISettings:
     barkUI: {fileID: 7054114963319097601, guid: 3b8eb8d1b0407de4ba9b0670c9be0665, type: 3}
-    barkUIOffset: {x: 0, y: 0, z: 0}
+    barkUIOffset: {x: 0, y: -1, z: 0}
   standardDialogueUISettings:
     subtitlePanelNumber: 0
     customSubtitlePanel: {fileID: 0}

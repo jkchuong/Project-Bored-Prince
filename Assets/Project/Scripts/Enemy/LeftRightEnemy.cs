@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Project.Scripts.Enemy
 {
-    public class LeftRightEnemyObject : EnemyObject
+    public class LeftRightEnemy : EnemyObject
     {
         [Header("Ground and Wall Detection")]
         [SerializeField] private LayerMask groundMask;
@@ -19,7 +19,7 @@ namespace Project.Scripts.Enemy
 
         private int direction = 1;
 
-        private void Update()
+        protected virtual void Update()
         {
             targetVelocity = new Vector2(maxSpeed * direction, 0);
             CheckLedgesAndWalls();
