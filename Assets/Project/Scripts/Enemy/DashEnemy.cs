@@ -7,7 +7,7 @@ namespace Project.Scripts.Enemy
     { 
         protected override IEnumerator DoAttack()
         {
-            Debug.Log(gameObject.name + " Do Attack");
+            Debug.Log(" Do Attack");
             yield break;
         }
     }
