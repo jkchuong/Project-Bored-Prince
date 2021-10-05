@@ -12,12 +12,13 @@ namespace Project.Scripts.Enemy
         [SerializeField] private float attackRange = 2f;
         [SerializeField] private float chaseSpeed = 2f;
 
-        private Player player;
+        protected Player player;
 
         private float distanceToPlayer;
         
         private bool coroutineAllowed = true;
         private bool idleMoving;
+        protected bool isAttacking;
         
         private protected override void Start()
         {
@@ -28,20 +29,21 @@ namespace Project.Scripts.Enemy
         protected override void Update()
         {
             distanceToPlayer = Vector2.Distance(player.transform.position, transform.position);
-            
-            if (distanceToPlayer <= attackRange)
+         
+            // TODO: Replace with FSM
+            if (distanceToPlayer <= attackRange && !isAttacking)
             {
                 StartCoroutine(DoAttack());
                 return;
             }
 
-            if (distanceToPlayer <= detectionRange)
+            if (distanceToPlayer <= detectionRange && !isAttacking)
             {
                 Chase();
                 return;
             }
 
-            if (idleMoving)
+            if (idleMoving && !isAttacking)
             {
                 base.Update();
             }
