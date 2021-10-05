@@ -1,21 +1,14 @@
+using System.Collections;
+using UnityEngine;
+
 namespace Project.Scripts.Enemy
 {
-    public class DashEnemy : LeftRightEnemy
-    {
-        enum EnemyState
+    public class DashEnemy : AttackerEnemy
+    { 
+        protected override IEnumerator DoAttack()
         {
-            IdleStay, // Staying still in one spot
-            IdleWalk, // Moving left and right default
-            Chasing, // Moving towards player
-            Attacking, // Doing attack animation
-            Searching // Waiting to see if player comes back
+            Debug.Log(gameObject.name + " Do Attack");
+            yield break;
         }
-
-        protected override void Update()
-        {
-            base.Update();
-            
-        }
-        
     }
 }

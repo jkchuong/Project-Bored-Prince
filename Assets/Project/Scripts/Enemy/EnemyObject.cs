@@ -7,7 +7,7 @@ namespace Project.Scripts.Enemy
     public class EnemyObject : PhysicsObject
     {
         [Header("Stats")]
-        public float maxSpeed;
+        public float maxSpeed = 1f;
         [SerializeField] private float damageAmount = 5;
 
         [SerializeField] private float isFrozen;

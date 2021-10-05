@@ -106,6 +106,9 @@ namespace Project.Scripts.Character
         private IEnumerator ResetPlayer()
         {
             // Move loading screen canvas
+            if (!SceneLoader.Instance)
+                yield break;
+            
             SceneLoader.Instance.StartLoadingScreen();
             
             // Wait for loading screen

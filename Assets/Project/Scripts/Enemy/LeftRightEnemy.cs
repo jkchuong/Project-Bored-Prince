@@ -17,7 +17,7 @@ namespace Project.Scripts.Enemy
         private RaycastHit2D rightWallRaycastHit;
         private RaycastHit2D leftWallRaycastHit;
 
-        private int direction = 1;
+        protected int direction = 1;
 
         protected virtual void Update()
         {
