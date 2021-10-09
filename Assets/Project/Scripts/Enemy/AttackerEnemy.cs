@@ -8,6 +8,8 @@ namespace Project.Scripts.Enemy
 {
     public abstract class AttackerEnemy : LeftRightEnemy
     {
+        [SerializeField] private float minIdleDuration = 2f;
+        [SerializeField] private float maxIdleDuration = 4f;
         [SerializeField] private float detectionRange = 5f;
         [SerializeField] private float attackRange = 2f;
         [SerializeField] private float chaseSpeed = 2f;
@@ -54,7 +56,7 @@ namespace Project.Scripts.Enemy
 
             if (coroutineAllowed)
             {
-                StartCoroutine( DoIdle(Random.Range(2f, 4f)));
+                StartCoroutine( DoIdle(Random.Range(minIdleDuration, maxIdleDuration)));
             }
         }
 

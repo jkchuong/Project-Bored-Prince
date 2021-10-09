@@ -5876,6 +5876,10 @@ PrefabInstance:
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[7].y
       value: -11.000132
       objectReference: {fileID: 0}
+    - target: {fileID: 666237622230088549, guid: 243dbdb9e5eaf904699e4dfc4d02bb0f, type: 3}
+      propertyPath: orthographic size
+      value: 7.75
+      objectReference: {fileID: 0}
     - target: {fileID: 666237622230088550, guid: 243dbdb9e5eaf904699e4dfc4d02bb0f, type: 3}
       propertyPath: m_IsActive
       value: 1
