@@ -9,7 +9,7 @@ namespace Project.Scripts.Collectibles
 
         protected override void HandlePickUp(Player player)
         {
-            player.inventory.AddCoin(); 
+            player.inventory.ModifyCoin(1); 
             
             Destroy(gameObject);
         }

@@ -6,6 +6,7 @@ using Project.Scripts.Core;
 using Project.Scripts.Enemy;
 using Project.Scripts.UI;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Project.Scripts.Character
 {
@@ -32,6 +33,10 @@ namespace Project.Scripts.Character
         private SpecialAttackBox specialAttackBox;
         private bool regularAttacking;
         private bool specialAttacking;
+        private Animator animator;
+        private static readonly int Speed = Animator.StringToHash("speed");
+        private static readonly int Grounded = Animator.StringToHash("grounded");
+        private static readonly int Grounded2 = Animator.StringToHash("jump");
 
         public event Action<Sprite> OnBuffChanged;
 
@@ -46,6 +51,8 @@ namespace Project.Scripts.Character
             Checkpoint = transform.position;
             
             Health = GetComponent<Health>();
+
+            animator = GetComponent<Animator>();
         }
 
         private protected override void Start()
@@ -73,6 +80,7 @@ namespace Project.Scripts.Character
             if (Input.GetButton("Jump") && grounded)
             {
                 velocity.y = jumpSpeed;
+                animator.SetTrigger(Grounded2);
             }
 
             // TODO: Modify this in animator
@@ -94,6 +102,9 @@ namespace Project.Scripts.Character
             {
                 StartCoroutine(SpecialAttack());
             }
+            
+            animator.SetFloat(Speed, Mathf.Abs(velocity.x));
+            animator.SetBool(Grounded, grounded);
         }
 
         private void HealthOnDoDeath()
@@ -118,6 +129,11 @@ namespace Project.Scripts.Character
             transform.position = Checkpoint;
             Health.ResetHealth();
             AddBuff(null, blankBuffSprite);
+            
+            // Remove some coins
+            float randomPercentage = Random.Range(0.1f, 0.3f);
+            int coinsToDrop = Mathf.FloorToInt(inventory.coinsCollected * randomPercentage);
+            inventory.ModifyCoin(-coinsToDrop);
 
             // Remove loading screen
             SceneLoader.Instance.EndLoadingScreen();

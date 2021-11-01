@@ -13,13 +13,13 @@ namespace Project.Scripts.Character
         public event Action<Sprite> OnLevelItemCollect;
         public event Action<Sprite> OnQuestItemCollect;
         
-        [SerializeField] private int coinsCollected;
+        public int coinsCollected;
         private List<ItemScriptable> questItems = new List<ItemScriptable>();
         private List<ItemScriptable> levelItems = new List<ItemScriptable>();
 
-        public void AddCoin()
+        public void ModifyCoin(int coinsChanged)
         {
-            coinsCollected++;
+            coinsCollected += coinsChanged;
             OnCoinsChanged?.Invoke(coinsCollected);
         }
         
