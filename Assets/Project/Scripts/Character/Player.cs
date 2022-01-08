@@ -6,6 +6,7 @@ using Project.Scripts.Core;
 using Project.Scripts.Enemy;
 using Project.Scripts.UI;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Project.Scripts.Character
 {
@@ -14,6 +15,7 @@ namespace Project.Scripts.Character
         [Header("Movement")]
         [SerializeField] private float maxSpeed = 5f;
         [SerializeField] private float jumpSpeed = 10f;
+        [SerializeField] private AudioClip[] footstepsAudioClips;
 
         [Header("Combat")]
         [SerializeField] private float attackDamage;
@@ -27,11 +29,18 @@ namespace Project.Scripts.Character
     
         public Vector2 Checkpoint { private get; set; }
         [SerializeField] private Sprite blankBuffSprite;
+
+        private AudioSource audioSource;
+        private int footstepsAudioClipSize => footstepsAudioClips.Length;
         
         private AttackBox attackBox;
         private SpecialAttackBox specialAttackBox;
         private bool regularAttacking;
         private bool specialAttacking;
+        private Animator animator;
+        private static readonly int Speed = Animator.StringToHash("speed");
+        private static readonly int Grounded = Animator.StringToHash("grounded");
+        private static readonly int Jump = Animator.StringToHash("jump");
 
         public event Action<Sprite> OnBuffChanged;
 
@@ -46,6 +55,10 @@ namespace Project.Scripts.Character
             Checkpoint = transform.position;
             
             Health = GetComponent<Health>();
+
+            animator = GetComponent<Animator>();
+
+            audioSource = GetComponent<AudioSource>();
         }
 
         private protected override void Start()
@@ -73,9 +86,9 @@ namespace Project.Scripts.Character
             if (Input.GetButton("Jump") && grounded)
             {
                 velocity.y = jumpSpeed;
+                animator.SetTrigger(Jump);
             }
 
-            // TODO: Modify this in animator
             if (targetVelocity.x > 0)
             {
                 transform.localScale = new Vector2(1, 1);
@@ -94,6 +107,9 @@ namespace Project.Scripts.Character
             {
                 StartCoroutine(SpecialAttack());
             }
+            
+            animator.SetFloat(Speed, Mathf.Abs(velocity.x));
+            animator.SetBool(Grounded, grounded);
         }
 
         private void HealthOnDoDeath()
@@ -118,6 +134,11 @@ namespace Project.Scripts.Character
             transform.position = Checkpoint;
             Health.ResetHealth();
             AddBuff(null, blankBuffSprite);
+            
+            // Remove some coins
+            float randomPercentage = Random.Range(0.1f, 0.3f);
+            int coinsToDrop = Mathf.FloorToInt(inventory.coinsCollected * randomPercentage);
+            inventory.ModifyCoin(-coinsToDrop);
 
             // Remove loading screen
             SceneLoader.Instance.EndLoadingScreen();
@@ -147,6 +168,12 @@ namespace Project.Scripts.Character
         {
             specialAttackBox.SetBuff(buff);
             OnBuffChanged?.Invoke(buffSprite);
+        }
+        
+        // Animation Event
+        public void PlayFootstepAudio()
+        {
+            audioSource.PlayOneShot(footstepsAudioClips[Random.Range(0, footstepsAudioClipSize)]);
         }
 
 #if UNITY_EDITOR
