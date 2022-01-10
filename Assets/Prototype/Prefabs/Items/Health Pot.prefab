@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 5174403186066233487}
   - component: {fileID: 6105485636169737796}
   - component: {fileID: 7155347609157833193}
-  - component: {fileID: 1788298304}
   m_Layer: 0
   m_Name: Health Pot
   m_TagString: Untagged
@@ -55,7 +54,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -76,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8823cc358a7f29a4399b43d0c8bd6916, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 675342fb99ebbef418b054b6cfa92a29, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4898,21 +4897,3 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &1788298304
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 816072494564125843}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8f6d3c6e4250e84192f5b34ce9e71bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  glowColor: {r: 0.5754717, g: 0.14386792, b: 0.14386792, a: 1}
-  glowBrightness: 2.11
-  outlineWidth: 10
-  alphaThreshold: 0
-  drawOutside: 1
-  enableInstancing: 0
