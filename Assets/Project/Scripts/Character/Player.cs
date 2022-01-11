@@ -20,8 +20,8 @@ namespace Project.Scripts.Character
         [Header("Combat")]
         [SerializeField] private float attackDamage;
         [SerializeField] private float specialAttackRadius = 1f;
-        // TODO: Add combo reset
         [SerializeField] private float timeForComboReset = 3f;
+        [SerializeField] private AudioClip[] swordSwingAudioClips;
 
         [Header("Stats")]
         [SerializeField] private float specialAttackSpeed = 0.2f;
@@ -34,6 +34,7 @@ namespace Project.Scripts.Character
 
         private AudioSource audioSource;
         private int FootstepsAudioClipSize => footstepsAudioClips.Length;
+        private int swordSwingAudioClipSize => swordSwingAudioClips.Length;
 
         private const int TOTAL_ATTACK_COMBO = 3;
         private int currentAttackCombo = 0;
@@ -185,6 +186,9 @@ namespace Project.Scripts.Character
         {
             attackBox.gameObject.SetActive(true);
             regularAttacking = true;
+            
+            audioSource.PlayOneShot(swordSwingAudioClips[Random.Range(0, swordSwingAudioClipSize)]);
+
             yield return new WaitForSeconds(attackSpeed);
             attackBox.gameObject.SetActive(false);
             regularAttacking = false;
