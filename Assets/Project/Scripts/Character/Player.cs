@@ -20,6 +20,8 @@ namespace Project.Scripts.Character
         [Header("Combat")]
         [SerializeField] private float attackDamage;
         [SerializeField] private float specialAttackRadius = 1f;
+        // TODO: Add combo reset
+        [SerializeField] private float timeForComboReset = 3f;
 
         [Header("Stats")]
         [SerializeField] private float specialAttackSpeed = 0.2f;
@@ -31,7 +33,12 @@ namespace Project.Scripts.Character
         [SerializeField] private Sprite blankBuffSprite;
 
         private AudioSource audioSource;
-        private int footstepsAudioClipSize => footstepsAudioClips.Length;
+        private int FootstepsAudioClipSize => footstepsAudioClips.Length;
+
+        private const int TOTAL_ATTACK_COMBO = 3;
+        private int currentAttackCombo = 0;
+        private float timeSinceRegularAttack = 0f;
+        
         
         private AttackBox attackBox;
         private SpecialAttackBox specialAttackBox;
@@ -41,6 +48,8 @@ namespace Project.Scripts.Character
         private static readonly int Speed = Animator.StringToHash("speed");
         private static readonly int Grounded = Animator.StringToHash("grounded");
         private static readonly int Jump = Animator.StringToHash("jump");
+        private static readonly int RegularAttack = Animator.StringToHash("regularAttack");
+        private static readonly int AttackCombo = Animator.StringToHash("attackCombo");
 
         public event Action<Sprite> OnBuffChanged;
 
@@ -81,9 +90,9 @@ namespace Project.Scripts.Character
         
         private void Update()
         {
-            targetVelocity = new Vector2(Input.GetAxis("Horizontal") * maxSpeed, 0);
+            targetVelocity = !regularAttacking ? new Vector2(Input.GetAxis("Horizontal") * maxSpeed, 0) : new Vector2(0, 0);
 
-            if (Input.GetButton("Jump") && grounded)
+            if (Input.GetButton("Jump") && grounded && !regularAttacking)
             {
                 velocity.y = jumpSpeed;
                 animator.SetTrigger(Jump);
@@ -100,16 +109,27 @@ namespace Project.Scripts.Character
 
             if (Input.GetKeyDown(KeyCode.K) && !regularAttacking)
             {
-                StartCoroutine(RegularAttack());
+                // StartCoroutine(DoRegularAttack());
+                animator.SetTrigger(RegularAttack);
+                timeSinceRegularAttack = 0f;
+                animator.SetInteger(AttackCombo, currentAttackCombo);
+                currentAttackCombo = (currentAttackCombo + 1) % TOTAL_ATTACK_COMBO;
             }
 
             if (Input.GetKeyDown(KeyCode.O) && !specialAttacking)
             {
-                StartCoroutine(SpecialAttack());
+                StartCoroutine(DoSpecialAttack());
             }
             
             animator.SetFloat(Speed, Mathf.Abs(velocity.x));
             animator.SetBool(Grounded, grounded);
+
+            timeSinceRegularAttack += Time.deltaTime;
+            if (timeSinceRegularAttack >= timeForComboReset)
+            {
+                currentAttackCombo = 0;
+                animator.SetInteger(AttackCombo, currentAttackCombo);
+            }
         }
 
         private void HealthOnDoDeath()
@@ -143,8 +163,14 @@ namespace Project.Scripts.Character
             // Remove loading screen
             SceneLoader.Instance.EndLoadingScreen();
         }
+        
+        public void AddBuff(Buff buff, Sprite buffSprite)
+        {
+            specialAttackBox.SetBuff(buff);
+            OnBuffChanged?.Invoke(buffSprite);
+        }
 
-        private IEnumerator SpecialAttack()
+        private IEnumerator DoSpecialAttack()
         {
             // TODO: Match this to animator but using Animation Event to trigger - set true during swing and false end of swing
             specialAttackBox.SetAttack(true);
@@ -154,9 +180,9 @@ namespace Project.Scripts.Character
             specialAttacking = false;
         }
 
-        private IEnumerator RegularAttack()
+        // Animation Event
+        private IEnumerator DoRegularAttack()
         {
-            // TODO: Match this to animator but using Animation Event to trigger - set true during swing and false end of swing
             attackBox.gameObject.SetActive(true);
             regularAttacking = true;
             yield return new WaitForSeconds(attackSpeed);
@@ -164,16 +190,10 @@ namespace Project.Scripts.Character
             regularAttacking = false;
         }
 
-        public void AddBuff(Buff buff, Sprite buffSprite)
-        {
-            specialAttackBox.SetBuff(buff);
-            OnBuffChanged?.Invoke(buffSprite);
-        }
-        
         // Animation Event
         public void PlayFootstepAudio()
         {
-            audioSource.PlayOneShot(footstepsAudioClips[Random.Range(0, footstepsAudioClipSize)]);
+            audioSource.PlayOneShot(footstepsAudioClips[Random.Range(0, FootstepsAudioClipSize)]);
         }
 
 #if UNITY_EDITOR
