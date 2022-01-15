@@ -34,7 +34,7 @@ namespace Project.Scripts.Character
 
         private AudioSource audioSource;
         private int FootstepsAudioClipSize => footstepsAudioClips.Length;
-        private int swordSwingAudioClipSize => swordSwingAudioClips.Length;
+        private int SwordSwingAudioClipSize => swordSwingAudioClips.Length;
 
         private const int TOTAL_ATTACK_COMBO = 3;
         private int currentAttackCombo = 0;
@@ -187,7 +187,7 @@ namespace Project.Scripts.Character
             attackBox.gameObject.SetActive(true);
             regularAttacking = true;
             
-            audioSource.PlayOneShot(swordSwingAudioClips[Random.Range(0, swordSwingAudioClipSize)]);
+            audioSource.PlayOneShot(swordSwingAudioClips[Random.Range(0, SwordSwingAudioClipSize)]);
 
             yield return new WaitForSeconds(attackSpeed);
             attackBox.gameObject.SetActive(false);

@@ -588,6 +588,13 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 312f0e0ecf1355443933da835a211866, type: 3}
   attackDamage: 4
   specialAttackRadius: 3
+  timeForComboReset: 3
+  swordSwingAudioClips:
+  - {fileID: 8300000, guid: 980e5672a4b17a04d9143ca7c2a8d3ac, type: 3}
+  - {fileID: 8300000, guid: c35bae5063bdf06488a1d5f5006ba77c, type: 3}
+  - {fileID: 8300000, guid: b2813c518a4585b4a9902407c1538462, type: 3}
+  - {fileID: 8300000, guid: d68d6142dcfee794792d1c3d015c2d4a, type: 3}
+  - {fileID: 8300000, guid: 4333b2bd8d93cda4d9255ece36b4e24a, type: 3}
   specialAttackSpeed: 2
   attackSpeed: 0.2
   blankBuffSprite: {fileID: -2890374716496177641, guid: fef0eca6c26525d4eb3808d38c4d2eed, type: 3}
